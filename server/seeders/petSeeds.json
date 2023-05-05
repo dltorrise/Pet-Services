@@ -1,0 +1,26 @@
+[
+    {
+      "name": "Fluffy",
+      "breed": "Corgi",
+      "age": 2,
+      "type": "dog",
+      "owner": "Kelly",
+      "image": "https://stumpsandrumps.com/wp-content/uploads/2022/10/AdobeStock_84017266.jpeg"
+    },
+    {
+        "name": "Tony",
+        "breed": "American",
+        "age": 1,
+        "type": "guinea pig",
+        "owner": "TomJ",
+        "image": "https://squeaksandnibbles.com/wp-content/uploads/2018/03/American-Guinea-Pig-Breed-Information-HP-long_-696x377.jpg"
+    },
+    {
+        "name": "Pepper",
+        "breed": "Abyssinian",
+        "age": 1,
+        "type": "guinea pig",
+        "owner": "TomJ",
+        "image": "https://images.saymedia-content.com/.image/c_limit%2Ccs_srgb%2Cq_auto:eco%2Cw_700/MTk3MDU0NDIzNDY0MTU4Mjkx/all-about-abyssinian-guinea-pigs.webp"
+    }
+]

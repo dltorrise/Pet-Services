@@ -1,0 +1,20 @@
+[
+    {
+      "username": "Kelly",
+      "email": "kelly@email.com",
+      "password": "password1",
+      "role": "pet owner"
+    },
+    {
+      "username": "DogLover7",
+      "email": "dl7@email.com",
+      "password": "password2",
+      "role": "service worker"
+    },
+    {
+      "username": "TomJ",
+      "email": "tj@email.com",
+      "password": "password3",
+      "role": "pet owner"
+    }
+]
