@@ -8,16 +8,19 @@ const userSchema = new Schema(
             required: true,
             unique: true,
         },
+
         email: {
             type: String,
             required: true,
             unique: true,
             match: [/.+@.+\..+/, 'Must use a valid email address'],
         },
+
         password: {
             type: String,
             required: true,
         },
+        
         // used to select a role on user profile
         role: {
             type: String,
