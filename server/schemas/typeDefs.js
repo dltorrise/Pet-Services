@@ -3,7 +3,7 @@ const { gql } = require('apollo-server');
 const typeDefs = gql`
 
   type User {
-    _id: ID!
+    _id: ID
     username: String!
     email: String!
     role: String!
@@ -11,7 +11,7 @@ const typeDefs = gql`
   }
 
   type Pet {
-    petId: ID!
+    _id: ID
     name: String!
     breed: String!
     description: String
@@ -20,15 +20,33 @@ const typeDefs = gql`
     owner: User!
   }
 
+  type Product {
+    _id: ID
+    name: String
+    description: String
+    image: String
+    quantity: Int
+    price: Float
+    category: Category
+  }
+
+  type Order {
+    _id: ID
+    purchaseDate: String
+    products: [Product]
+  }
+
   type Auth {
     token: ID!
     user: User
   }
 
   type Query {
-    getUser(id: ID!): User
-    getPet(id: ID!): Pet
-    getAllPets: [Pet!]!
+    products(category: ID, name: String): [Product]
+    product(_id: ID!): Product
+    order(_id: ID!): Product
+    user: User
+    Pet: Pet
   }
 
   type Mutation {
