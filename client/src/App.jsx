@@ -13,7 +13,7 @@ function App() {
           <nav>
             <ul>
               <li class="current">
-                <a href="index.php">Home</a>
+                <a href="home.php">Home</a>
               </li>
               <li class="current">
                 <a href="services.php">Services</a>
@@ -36,7 +36,6 @@ function App() {
         <section id="showcase">
           <div class="container2">
             <h1>Find a Pet Service</h1>
-            <p>map goes here</p>
             <Map />
           </div>
         </section>
