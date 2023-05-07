@@ -1,0 +1,39 @@
+.row {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(47, 133, 198);
+  border-radius: 1%;
+}
+body {
+  background-color: rgb(222, 232, 237);
+}
+.box {
+  display: inline-block;
+  justify-content: space-between;
+  padding-left: 3%;
+  
+}
+.servicebox {
+  border-radius: 20%;
+}
+.h2title {
+  font-weight: bolder;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-top: 1.8em;
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+  padding-top: 1%;
+}
+#mission {
+  font-weight: bolder;
+  box-shadow: 0 0 1.5em #031a48;
+  background-color: whitesmoke;
+  border-radius: 1%;
+  padding-right: 75%;
+  width: 400px;
+  padding: 10px;
+  margin: 30px;
+  
+}
