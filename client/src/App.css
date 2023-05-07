@@ -5,13 +5,13 @@
   border-radius: 1%;
 }
 body {
-  background-color: rgb(222, 232, 237);
+  background-color: white;
+  
 }
 .box {
   display: inline-block;
   justify-content: space-between;
   padding-left: 3%;
-  
 }
 .servicebox {
   border-radius: 20%;
@@ -41,3 +41,45 @@ body {
 svg {
   color: red;
 }
+#branding {
+  color: rgb(47, 133, 198);
+  font-weight: bolder;
+  font-size: 1.4em;
+  text-align: center;
+  text-transform: uppercase;
+}
+ #branding :hover {
+  color: rgb(47, 133, 198);
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+.current {
+  display: inline-flex;
+  justify-content: space-between;
+  padding-left: 3%;
+  border-radius: 1%;
+  font-weight: bolder;
+  font-size: 1.3em; 
+}
+.current :hover {
+  color: rgb(47, 133, 198);
+  transform: scale(1.1);
+  transition: 0.5s;
+  cursor: pointer;
+}
+#newsletter {
+  padding-right: 5%;
+  border-radius: 1%;
+  font-weight: bolder;
+  font-size: 1.0em;
+}
+#showcase {
+  padding-left: 2%;
+  margin-bottom: 2%;
+  border-radius: 1%;
+  font-weight: bolder;
+  font-size: 1.0em;
+}
+
+
+ 

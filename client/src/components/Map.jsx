@@ -52,13 +52,14 @@ export default function SimpleMap() {
         {cities.map((city, i) => (
           <option value={i}>{city.name}</option>
         ))}
-        {/* 
+        {
+        /* 
         <option value="0">Chicago</option>
         <option value="1">Evanston</option>
         */}
       </select>
 
-      <div style={{ height: "50vh", width: "100%" }}>
+      <div style={{ height: "60vh", width: "200%" }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyAa7Fs6zs5me7OX3Fx-K5cD9RYAxnHFw6Q" }}
           center={defaultProps.center}
