@@ -1,18 +1,24 @@
 const db = require('../config/connection');
-const { User, Pet } = require('../models');
+const { User, Pet, Product, Order } = require('../models');
 
 // maybe having issue with requiring Pet model
 // maybe having issue with enum seeding, need to test/research
 
 const petSeeds = require('./petSeeds.json');
 const userSeeds = require('./userSeeds.json');
+const productSeeds = require('./productSeeds');
+// not seeding Orders
 
 db.once('open', async () => {
     try {
       // drop all data before seeding 
       await Pet.deleteMany({});
       await User.deleteMany({});
-  
+      await Product.deleteMany({});
+      await Order.deleteMany({});
+
+      await Product.insertMany(productSeeds);
+
       await User.create(userSeeds);
   
       for (let i = 0; i < petSeeds.length; i++) {
