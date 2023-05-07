@@ -67,7 +67,6 @@ export const ADD_PET = gql`
       type: $type
       owner: $owner
     ) {
-      token
       pet {
         _id
       }
