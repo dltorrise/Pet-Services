@@ -1,7 +1,7 @@
 {
   "name": "pet-services",
   "version": "1.0.0",
-  "description": "This e-commerce website provides an easy way to book a professional service for pets.",
+  "description": "",
   "main": "server/server.js",
   "scripts": {
     "start": "node server --ignore client",
