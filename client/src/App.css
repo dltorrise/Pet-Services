@@ -1,0 +1,85 @@
+.row {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(47, 133, 198);
+  border-radius: 1%;
+}
+body {
+  background-color: white;
+  
+}
+.box {
+  display: inline-block;
+  justify-content: space-between;
+  padding-left: 3%;
+}
+.servicebox {
+  border-radius: 20%;
+}
+.h2title {
+  font-weight: bolder;
+  text-align: center;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin-top: 1.8em;
+  margin-bottom: 0.5em;
+  text-transform: uppercase;
+  padding-top: 1%;
+}
+#mission {
+  font-weight: bolder;
+  box-shadow: 0 0 1.5em #031a48;
+  background-color: whitesmoke;
+  border-radius: 1%;
+  padding-right: 75%;
+  width: 400px;
+  padding: 10px;
+  margin: 30px;
+  
+}
+
+svg {
+  color: red;
+}
+#branding {
+  color: rgb(47, 133, 198);
+  font-weight: bolder;
+  font-size: 1.4em;
+  text-align: center;
+  text-transform: uppercase;
+}
+ #branding :hover {
+  color: rgb(47, 133, 198);
+  transform: scale(1.1);
+  transition: 0.5s;
+}
+.current {
+  display: inline-flex;
+  justify-content: space-between;
+  padding-left: 3%;
+  border-radius: 1%;
+  font-weight: bolder;
+  font-size: 1.3em; 
+}
+.current :hover {
+  color: rgb(47, 133, 198);
+  transform: scale(1.1);
+  transition: 0.5s;
+  cursor: pointer;
+}
+#newsletter {
+  padding-right: 5%;
+  border-radius: 1%;
+  font-weight: bolder;
+  font-size: 1.0em;
+}
+#showcase {
+  padding-left: 2%;
+  margin-bottom: 2%;
+  border-radius: 1%;
+  font-weight: bolder;
+  font-size: 1.0em;
+}
+
+
+ 
