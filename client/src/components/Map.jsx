@@ -4,7 +4,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 
 const cities = [
   {
-    name: "Chicago",
+    name: "Chicago", 
     lat: 41.9341235,
     lng: -87.7783599,
     pins: [
