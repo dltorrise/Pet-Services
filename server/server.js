@@ -3,8 +3,8 @@ const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
 
-// server to configure environment variables
-require("dotenv").config();
+// server to configure environment variables - need to research where it will go with GraphQl/Apollo 
+// require("dotenv").config();
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
@@ -20,16 +20,17 @@ const server = new ApolloServer({
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
-app.use('/images', express.static(path.join(__dirname, '../client/images'))); // path to the images, may change
-
+app.use('/images', express.static(path.join(__dirname, '../client/images')));
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static(path.join(__dirname, '../client/build')));
 }
 
-app.get('/', (req, res) => {
+// catch all for all server-side get routes to route to index file in build directory
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
+// a new instance of an Apollo server with the GraphQL schema
 const startApolloServer = async (typeDefs, resolvers) => {
   await server.start();
   server.applyMiddleware({ app });
@@ -41,5 +42,6 @@ const startApolloServer = async (typeDefs, resolvers) => {
     })
   })
   };
-  
+
+  // start the server
   startApolloServer(typeDefs, resolvers);

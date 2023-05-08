@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 // jwt-decode needs to be in package.json on client side
 
-// need to add query checkout? 
+// need to add query checkout - stripe ?
 
 // query products by category
 // question: do we need this?
@@ -20,6 +20,15 @@ export const QUERY_PRODUCTS = gql`
   }
 `;
 
+// for Stripe?
+// export const QUERY_CHECKOUT = gql`
+//   query getCheckout($products: [ID]!) {
+//     checkout(products: $products) {
+//       session
+//     }
+//   }
+// `;
+
 // has category defined here
 export const QUERY_ALL_PRODUCTS = gql`
   {
@@ -36,7 +45,17 @@ export const QUERY_ALL_PRODUCTS = gql`
   }
 `;
 
-// may need to query orders too
+// check on this
+// export const QUERY_CATEGORIES = gql`
+//   {
+//     categories {
+//       _id
+//       name
+//     }
+//   }
+// `;
+
+// can use this to query order history and pet/owner profile/ possibly service provider profile 
 export const QUERY_USER = gql`
   {
     user {
@@ -67,13 +86,5 @@ export const QUERY_PET = gql`
             owner
             image
         }
-  }
-`;
-
-// query all orders by user
-// need relationship between User and Order model
-export const QUERY_ALL_ORDERS = gql`
-  {
-    
   }
 `;
