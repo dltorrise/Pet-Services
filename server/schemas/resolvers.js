@@ -1,11 +1,11 @@
 const { User, Pet, Product, Order } = require('../models');
 const { AuthenticationError } = require('apollo-server-express');
 const { signToken } = require('../utils/auth');
-// add stripe for transactions
+const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
+
   Query: {
-    
     user: async (parent, args, context) => {
       if (context.user) {
         return User.findById(context.user._id).populate('pets');
@@ -17,10 +17,10 @@ const resolvers = {
       return Pet.findById(id).populate('owner');
     },
 
-    products: async (parent, { category, name }) => {
+    products: async (parent, { service, name }) => {
       const params = {};
-      if (category) {
-        params.category = category;
+      if (service) {
+        params.service = service;
       }
       if (name) {
         params.name = { $regex: name, $options: 'i' };
@@ -29,11 +29,54 @@ const resolvers = {
     },
 
     product: async (parent, { id }) => {
-      return Product.findById(id).populate('category');
+      return Product.findById(id).populate('service');
+    },
+
+    order: async (parent, { id }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('You need to be logged in!');
+      }
+      const order = await Order.findById(id).populate('products.product');
+      if (!order) {
+        throw new Error('Order not found');
+      }
+      if (order.user.toString() !== context.user._id.toString()) {
+        throw new ForbiddenError('You are not authorized to access this order');
+      }
+      return order;
+    },
+
+    checkout: async (parent, { products }, context) => {
+      if (!context.user) {
+        throw new AuthenticationError('You need to be logged in!');
+      }
+      const user = await User.findById(context.user._id);
+      if (!user) {
+        throw new Error('User not found');
+      }
+      const lineItems = products.map(product => ({
+        price_data: {
+          currency: 'usd',
+          product_data: {
+            name: product.name,
+          },
+          unit_amount: product.price * 100,
+        },
+        quantity: 1,
+      }));
+      const session = await stripe.checkout.sessions.create({
+        payment_method_types: ['card'],
+        line_items: lineItems,
+        mode: 'payment',
+        success_url: 'https://example.com/success',
+        cancel_url: 'https://example.com/cancel',
+      });
+      return {
+        sessionId: session.id,
+        publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
+      };
     },
   },
-  
-  // create query for checkout using stripe
 
   Mutation: {
 
@@ -47,13 +90,17 @@ const resolvers = {
     // mutation for adding an order
     order: async (parent, { products }, context) => {
       if (context.user) {
-        const order = new Order({ products });
-
+        const orderProducts = products.map(product => ({
+          product: product._id,
+          quantity: product.quantity,
+        }));
+        const order = new Order({ products: orderProducts });
+    
         await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
-
+    
         return order;
       }
-
+    
       throw new AuthenticationError('Not logged in');
     },
 
@@ -96,8 +143,4 @@ const resolvers = {
   },
 };
 
-
-
 module.exports = resolvers;
-
-
