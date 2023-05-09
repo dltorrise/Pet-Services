@@ -27,6 +27,14 @@ function App() {
               <li class="current">
                 <a href="login.php">Login</a>
               </li>
+              <li class = "current1">
+                <a href="cart.php">Cart</a>
+             <img src="https://cdn.vectorstock.com/i/1000x1000/70/12/add-to-cart-icon-adding-shopping-cart-vector-28487012.webp
+             " width="20" height="20" />
+                
+            
+              
+              </li>
             </ul>
           </nav>
         </div>
