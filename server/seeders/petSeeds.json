@@ -1,11 +1,11 @@
 [
     {
-      "name": "Fluffy",
-      "breed": "Corgi",
-      "age": 2,
-      "type": "dog",
-      "owner": "Kelly",
-      "image": "https://stumpsandrumps.com/wp-content/uploads/2022/10/AdobeStock_84017266.jpeg"
+        "name": "Fluffy",
+        "breed": "Corgi",
+        "age": 2,
+        "type": "dog",
+        "owner": "Kelly",
+        "image": "https://stumpsandrumps.com/wp-content/uploads/2022/10/AdobeStock_84017266.jpeg"
     },
     {
         "name": "Tony",
