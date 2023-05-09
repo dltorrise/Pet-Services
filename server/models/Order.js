@@ -5,13 +5,23 @@ const orderSchema = new Schema({
     type: Date,
     default: Date.now
   },
-  product: {
-    type: Schema.Types.ObjectId,
-    ref: 'Product',
-    required: true
-  }
+  products: [
+    {
+      product: {
+        type: Schema.Types.ObjectId,
+        ref: 'Product',
+        required: true
+      },
+      quantity: {
+        type: Number,
+        required: true,
+        min: 1
+      }
+    }
+  ]
 });
 
 const Order = model('Order', orderSchema);
 
 module.exports = Order;
+
