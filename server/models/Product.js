@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose');
 
 const productSchema = new Schema({
   
-  service: {
+  name: {
     type: String,
     enum: [
       'Dog walking',
@@ -48,12 +48,6 @@ const productSchema = new Schema({
     required: true,
     min: 0
   },
-
-  quantity: {
-    type: Number,
-    required: true,
-    min: 0
-  }
 });
 
 const Product = model('Product', productSchema);

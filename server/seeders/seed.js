@@ -36,9 +36,13 @@ db.once('open', async () => {
       for (let i = 0; i < productTypes.length; i++) {
         await Order.create({
           purchaseDate: Date.now(),
-          product: productTypes[i]._id
+          products: [{
+            product: productTypes[i]._id,
+            quantity: 1,
+          }]
         })
       }
+
     } catch (err) {
       console.error(err);
       process.exit(1);
