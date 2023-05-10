@@ -3,6 +3,7 @@
   justify-content: space-between;
   background-color: rgb(47, 133, 198);
   border-radius: 1%;
+ 
 }
 body {
   background-color: white;
@@ -15,6 +16,7 @@ body {
 }
 .servicebox {
   border-radius: 20%;
+  cursor: pointer;
 }
 .h2title {
   font-weight: bolder;
@@ -84,9 +86,28 @@ svg {
   /* cart needs to be to the right */
   text-align: right;
   ;
- 
-  
+}
+.map {
+  width: 500px;
 
 }
-
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+.map {
+  width: 90vw;
+}
+body {
+  width: 100%;
+  overflow: auto;
+}
+.row {
+  display: block;
+}
+#mission{
+  width: 70vw;
+  padding-right: 0%;
+}
+  /* Styles */
+}
  

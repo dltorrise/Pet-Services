@@ -13,27 +13,31 @@ function App() {
           <nav>
             <ul>
               <li class="current">
-                <a href="home.php">Home</a>
+                <a href="home">Home</a>
               </li>
               <li class="current">
-                <a href="services.php">Services</a>
+                <a href="services">Services</a>
               </li>
               <li class="current">
-                <a href="about.php">About</a>
+                <a href="about">About</a>
               </li>
               <li class="current">
-                <a href="register.php">Register</a>
+                <a href="register">Register</a>
               </li>
               <li class="current">
-                <a href="login.php">Login</a>
+                <a href="login">Login</a>
               </li>
-              <li class = "current1">
-                <a href="cart.php">Cart</a>
-             <img src="https://cdn.vectorstock.com/i/1000x1000/70/12/add-to-cart-icon-adding-shopping-cart-vector-28487012.webp
-             " width="20" height="20" />
-                
-            
-              
+              <li class="current1">
+                <a href="/cart">Cart</a>
+                {/* may need to change php extention */}
+                {/* php and react dont work together */}
+                {/* /react router  */}
+                <img
+                  src="https://cdn.vectorstock.com/i/1000x1000/70/12/add-to-cart-icon-adding-shopping-cart-vector-28487012.webp
+             "
+                  width="20"
+                  height="20"
+                />
               </li>
             </ul>
           </nav>
@@ -73,6 +77,10 @@ function App() {
               src="https://www.banfield.com/-/media/Project/Banfield/Main/en/Wellness_at_Banfield/Puppy_Hub/Puppy_Hub_6-7_months/0994_18_Banner_Animation_new.gif?rev=690d3ae4ca624d2f92f38ae5fd80ea7f"
               width="150"
               height="150"
+              onClick = {() => {
+                localStorage.setItem("service", "dogwalking");
+                alert("Dog Walking Service Added to Cart");
+              }}
             />
           </div>
           <div class="box">
@@ -82,6 +90,10 @@ function App() {
               src="https://thumbs.dreamstime.com/b/cute-cartoon-cat-sitting-smiling-little-vector-illustration-sketch-152283646.jpg"
               width="150"
               height="150"
+              onClick = {() => {
+                localStorage.setItem("service", "catSitting");
+                alert("cat sitting added to cart");
+              }}
             />
             {/* <!-- <p>Find a cat sitter near you</p> --> */}
           </div>
