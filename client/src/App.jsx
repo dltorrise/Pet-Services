@@ -1,5 +1,10 @@
 import "./App.css";
 import Map from "./components/Map";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// import Login from './components/pages/Login'
+import Profile from './components/pages/Profile';
+import Cart from './components/pages/Cart'
+
 function App() {
   return (
     <>
@@ -11,23 +16,37 @@ function App() {
             </h1>
           </div>
           <nav>
-            <ul>
+             {/* AuthService.loggedIn() ? () : (); 
+ternary operator
+if they are logged in
+// Profile
+           <li><Route 
+                path="/profile/:profileid" 
+                element={<Profile />} 
+              >Hello, {data.user.username}!</Route></li>
+// Logout
+           <li>Logout</li>
+
+if they are logged out
+// Login or Register
+                <li>
+              <Route 
+                path="/login" 
+                element={<Login />} 
+              >
+              Login or Register
+            </Routes>
+            </li> */}
               <li class="current">
-                <a href="home">Home</a>
+                <a href="/home">Home</a>
               </li>
               <li class="current">
-                <a href="services">Services</a>
+                <a href="/login">Login</a>
               </li>
               <li class="current">
-                <a href="about">About</a>
+                <a href="/sign-up">Sign up</a>
               </li>
               <li class="current">
-                <a href="register">Register</a>
-              </li>
-              <li class="current">
-                <a href="login">Login</a>
-              </li>
-              <li class="current1">
                 <a href="/cart">Cart</a>
                 {/* may need to change php extention */}
                 {/* php and react dont work together */}
@@ -39,7 +58,6 @@ function App() {
                   height="20"
                 />
               </li>
-            </ul>
           </nav>
         </div>
       </header>
@@ -84,7 +102,7 @@ function App() {
             />
           </div>
           <div class="box">
-            <h3>Cat Sitting</h3>
+            <h3>Pet Sitting</h3>
             <img
               class="servicebox"
               src="https://thumbs.dreamstime.com/b/cute-cartoon-cat-sitting-smiling-little-vector-illustration-sketch-152283646.jpg"
@@ -97,7 +115,7 @@ function App() {
             />
             {/* <!-- <p>Find a cat sitter near you</p> --> */}
           </div>
-          <div class="box">
+          {/* <div class="box">
             <h3>Bird Sitting</h3>
             <img
               class="servicebox"
@@ -106,9 +124,9 @@ function App() {
               width="150"
               height="150"
             />
-          </div>
+          </div> */}
           <div class="box">
-            <h3>Grooming</h3>
+            <h3>Pet Grooming</h3>
             <img
               class="servicebox"
               src="https://thumbs.dreamstime.com/b/dog-grooming-logo-design-template-pawprint-comb-scissors-vector-clipart-drawing-isolated-illustration-white-background-217266808.jpg"
@@ -116,7 +134,7 @@ function App() {
               height="150"
             />
           </div>
-          <div class="box">
+          {/* <div class="box">
             <h3>Trainer</h3>
             <img
               class="servicebox"
@@ -124,9 +142,9 @@ function App() {
               width="150"
               height="150"
             />
-          </div>
+          </div> */}
           <div class="box">
-            <h3>other</h3>
+            <h3>Animal Boarding</h3>
             <img
               class="servicebox"
               src="https://www.universityplacevet.com/wp-content/uploads/sites/13/2018/10/logobig.png"
