@@ -21,7 +21,7 @@ function App() {
             </h1>
           </div>
           <nav   >
-          {AuthService.loggedIn() ? (<div><li><a href="/profile/:profileid">Hello, {data.user.username}!</a></li><li onClick = {() => {AuthService.logout()}}>Logout</li></div>) : (<div><li class="current"><a href="/login">Login</a></li><li class="current"><a href="/signup">Sign up</a></li></div>)}
+          {AuthService.loggedIn() ? (<div><li><a href="/profile">Hello, {data.user.username}!</a></li><li onClick = {() => {AuthService.logout()}}>Logout</li></div>) : (<div><li class="current"><a href="/login">Login</a></li><li class="current"><a href="/sign-up">Sign up</a></li></div>)}
               <li class="current">
                 <a href="/">Home</a>
               </li>
@@ -74,11 +74,11 @@ function App() {
               src="https://www.banfield.com/-/media/Project/Banfield/Main/en/Wellness_at_Banfield/Puppy_Hub/Puppy_Hub_6-7_months/0994_18_Banner_Animation_new.gif?rev=690d3ae4ca624d2f92f38ae5fd80ea7f"
               width="150"
               height="150"
-              onClick = {() => {
+            />
+            {AuthService.loggedIn() ? (<div><p onClick = {() => {
                 localStorage.setItem("service", "dogwalking");
                 alert("Dog Walking Service Added to Cart");
-              }}
-            />
+              }}>Add to Cart</p></div>) : (null)}
           </div>
           <div class="box">
             <h3>Pet Sitting</h3>
@@ -87,11 +87,11 @@ function App() {
               src="https://thumbs.dreamstime.com/b/cute-cartoon-cat-sitting-smiling-little-vector-illustration-sketch-152283646.jpg"
               width="150"
               height="150"
-              onClick = {() => {
+            />
+            {AuthService.loggedIn() ? (<div><p onClick = {() => {
                 localStorage.setItem("service", "catSitting");
                 alert("cat sitting added to cart");
-              }}
-            />
+              }}>Add to Cart</p></div>) : (null)}
             {/* <!-- <p>Find a cat sitter near you</p> --> */}
           </div>
           {/* <div class="box">
@@ -112,6 +112,10 @@ function App() {
               width="150"
               height="150"
             />
+                        {AuthService.loggedIn() ? (<div><p onClick = {() => {
+                localStorage.setItem("service", "petGrooming");
+                alert("pet grooming added to cart");
+              }}>Add to Cart</p></div>) : (null)}
           </div>
           {/* <div class="box">
             <h3>Trainer</h3>
@@ -130,6 +134,10 @@ function App() {
               width="150"
               height="150"
             />
+            {AuthService.loggedIn() ? (<div><p onClick = {() => {
+                localStorage.setItem("service", "animalBoarding");
+                alert("pet grooming added to cart");
+              }}>Add to Cart</p></div>) : (null)}
           </div>
         </div>
       </section>

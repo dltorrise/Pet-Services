@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import AuthService from './utils/auth'
 import {
   ApolloClient,
   InMemoryCache,
@@ -40,9 +41,9 @@ return (
       <ApolloProvider client={client}>
         <Routes>
           <Route index element={<App />} />
-          <Route path= 'cart' element={<Cart />} />
+          <Route path= 'cart' element={ AuthService.loggedIn() ? <Cart /> : <Navigate to="/login"/> } />
+          <Route path= 'profile' element={ AuthService.loggedIn() ? <Profile /> : <Navigate to="/login"/> } />
           <Route path= 'login' element={<Login />} />
-          <Route path= 'profile' element={<Profile />} />
           <Route path= 'signup' element={<Signup />} />
         </Routes>
       </ApolloProvider>
