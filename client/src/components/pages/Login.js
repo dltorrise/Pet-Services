@@ -38,21 +38,21 @@ function Login(props) {
             <div className="">
                 <label htmlFor="email">Email address:</label>
                 <input
-                placeholder="youremail@email.com"
-                name="email"
-                type="email"
-                id="email"
-                onChange={handleChange}
+                    placeholder="youremail@email.com"
+                    name="email"
+                    type="email"
+                    id="email"
+                    onChange={handleChange}
                 />
             </div>
             <div className="">
                 <label htmlFor="pwd">Password:</label>
                 <input
-                placeholder="******"
-                name="password"
-                type="password"
-                id="pwd"
-                onChange={handleChange}
+                    placeholder="******"
+                    name="password"
+                    type="password"
+                    id="pwd"
+                    onChange={handleChange}
                 />
             </div>
             {error ? (
