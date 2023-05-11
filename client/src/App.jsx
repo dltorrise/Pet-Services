@@ -1,9 +1,12 @@
 import "./App.css";
 import Map from "./components/Map";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-// import Login from './components/pages/Login'
+import Login from './components/pages/Login'
 import Profile from './components/pages/Profile';
 import Cart from './components/pages/Cart'
+import AuthService from './utils/auth'
+import { QUERY_USER } from './utils/queries'
+import { useQuery, useMutation } from '@apollo/client';
 
 function App() {
   const { loading, data } = useQuery(QUERY_USER);
@@ -17,41 +20,12 @@ function App() {
               <span class="highlight">Pet</span> Services
             </h1>
           </div>
-          <nav>
-             {/* AuthService.loggedIn() ? () : (); 
-ternary operator
-if they are logged in
-// Profile
-           <li><Route 
-                path="/profile/:profileid" 
-                element={<Profile />} 
-              >Hello, {data.user.username}!</Route></li>
-// Logout
-           <li>Logout</li>
-
-if they are logged out
-// Login or Register
-                <li>
-              <Route 
-                path="/login" 
-                element={<Login />} 
-              >
-              Login or Register
-            </Routes>
-            </li> */}
+          <nav   >
+          {AuthService.loggedIn() ? (<div><li><a href="/profile/:profileid">Hello, {data.user.username}!</a></li><li onClick = {() => {AuthService.logout()}}>Logout</li></div>) : (<div><li class="current"><a href="/login">Login</a></li><li class="current"><a href="/signup">Sign up</a></li></div>)}
               <li class="current">
-                <a href="services">Services</a>
+                <a href="/">Home</a>
               </li>
               <li class="current">
-                <a href="about">About</a>
-              </li>
-              <li class="current">
-                <a href="signup">Signup</a>
-              </li>
-              <li class="current">
-                <a href="login">Login</a>
-              </li>
-              <li class="current1">
                 <a href="/cart">Cart</a>
                 {/* may need to change php extention */}
                 {/* php and react dont work together */}
@@ -63,7 +37,6 @@ if they are logged out
                   height="20"
                 />
               </li>
-            </ul>
           </nav>
         </div>
       </header>
@@ -108,7 +81,7 @@ if they are logged out
             />
           </div>
           <div class="box">
-            <h3>Cat Sitting</h3>
+            <h3>Pet Sitting</h3>
             <img
               class="servicebox"
               src="https://thumbs.dreamstime.com/b/cute-cartoon-cat-sitting-smiling-little-vector-illustration-sketch-152283646.jpg"
@@ -121,7 +94,7 @@ if they are logged out
             />
             {/* <!-- <p>Find a cat sitter near you</p> --> */}
           </div>
-          <div class="box">
+          {/* <div class="box">
             <h3>Bird Sitting</h3>
             <img
               class="servicebox"
@@ -130,9 +103,9 @@ if they are logged out
               width="150"
               height="150"
             />
-          </div>
+          </div> */}
           <div class="box">
-            <h3>Grooming</h3>
+            <h3>Pet Grooming</h3>
             <img
               class="servicebox"
               src="https://thumbs.dreamstime.com/b/dog-grooming-logo-design-template-pawprint-comb-scissors-vector-clipart-drawing-isolated-illustration-white-background-217266808.jpg"
@@ -140,7 +113,7 @@ if they are logged out
               height="150"
             />
           </div>
-          <div class="box">
+          {/* <div class="box">
             <h3>Trainer</h3>
             <img
               class="servicebox"
@@ -148,9 +121,9 @@ if they are logged out
               width="150"
               height="150"
             />
-          </div>
+          </div> */}
           <div class="box">
-            <h3>other</h3>
+            <h3>Animal Boarding</h3>
             <img
               class="servicebox"
               src="https://www.universityplacevet.com/wp-content/uploads/sites/13/2018/10/logobig.png"
