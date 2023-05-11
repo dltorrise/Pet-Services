@@ -1,5 +1,4 @@
 import decode from 'jwt-decode';
-// jwt-decode needs to be in package.json on client side
 
 class AuthService {
   getProfile() {
