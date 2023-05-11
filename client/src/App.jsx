@@ -23,13 +23,7 @@ function App() {
           <nav   >
           {AuthService.loggedIn() ? (<div><li><a href="/profile">Hello, {data.user.username}!</a></li><li onClick = {() => {AuthService.logout()}}>Logout</li></div>) : (<div><li class="current"><a href="/login">Login</a></li><li class="current"><a href="/sign-up">Sign up</a></li></div>)}
               <li class="current">
-                <a href="/home">Home</a>
-              </li>
-              <li class="current">
-                <a href="/login">Login</a>
-              </li>
-              <li class="current">
-                <a href="/sign-up">Sign up</a>
+                <a href="/">Home</a>
               </li>
               <li class="current">
                 <a href="/cart">Cart</a>
