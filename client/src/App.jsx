@@ -1,12 +1,17 @@
 import "./App.css";
 import Map from "./components/Map";
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-// import Login from './components/pages/Login'
+import Login from './components/pages/Login'
 import Profile from './components/pages/Profile';
 import Cart from './components/pages/Cart'
+import AuthService from './utils/auth'
+import { QUERY_USER } from './utils/queries'
+import { useQuery, useMutation } from '@apollo/client';
 
 function App() {
+  const { loading, data } = useQuery(QUERY_USER);
   return (
+    
     <>
       <header>
         <div class="container">
@@ -15,28 +20,8 @@ function App() {
               <span class="highlight">Pet</span> Services
             </h1>
           </div>
-          <nav>
-             {/* AuthService.loggedIn() ? () : (); 
-ternary operator
-if they are logged in
-// Profile
-           <li><Route 
-                path="/profile/:profileid" 
-                element={<Profile />} 
-              >Hello, {data.user.username}!</Route></li>
-// Logout
-           <li>Logout</li>
-
-if they are logged out
-// Login or Register
-                <li>
-              <Route 
-                path="/login" 
-                element={<Login />} 
-              >
-              Login or Register
-            </Routes>
-            </li> */}
+          <nav   >
+          {AuthService.loggedIn() ? (<div><li><a href="/profile/:profileid">Hello, {data.user.username}!</a></li><li onClick = {() => {AuthService.logout()}}>Logout</li></div>) : (<div><li class="current"><a href="/login">Login</a></li><li class="current"><a href="/sign-up">Sign up</a></li></div>)}
               <li class="current">
                 <a href="/home">Home</a>
               </li>
