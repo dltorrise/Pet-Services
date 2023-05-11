@@ -1,7 +1,14 @@
 import "./App.css";
 import Map from "./components/Map";
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+// import Login from './components/pages/Login'
+import Profile from './components/pages/Profile';
+import Cart from './components/pages/Cart'
+
 function App() {
+  const { loading, data } = useQuery(QUERY_USER);
   return (
+    
     <>
       <header>
         <div class="container">
@@ -11,10 +18,27 @@ function App() {
             </h1>
           </div>
           <nav>
-            <ul>
-              <li class="current">
-                <a href="home">Home</a>
-              </li>
+             {/* AuthService.loggedIn() ? () : (); 
+ternary operator
+if they are logged in
+// Profile
+           <li><Route 
+                path="/profile/:profileid" 
+                element={<Profile />} 
+              >Hello, {data.user.username}!</Route></li>
+// Logout
+           <li>Logout</li>
+
+if they are logged out
+// Login or Register
+                <li>
+              <Route 
+                path="/login" 
+                element={<Login />} 
+              >
+              Login or Register
+            </Routes>
+            </li> */}
               <li class="current">
                 <a href="services">Services</a>
               </li>
