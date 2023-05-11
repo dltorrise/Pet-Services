@@ -7,15 +7,16 @@ import Login from "./components/pages/Login"
 import Profile from "./components/pages/Profile"
 import Signup from "./components/pages/Signup"
 import { ApolloProvider } from "@apollo/client";
+import AuthService from './utils/auth'
 
 export default function Index() {
 return (
 <BrowserRouter>
       <Routes>
         <Route index element={<App />} />
-        <Route path= 'cart' element={<Cart />} />
+        <Route { AuthService.loggedIn() ? path= 'cart' : path='login'} element={<Cart />} />
         <Route path= 'login' element={<Login />} />
-        <Route path= 'profile' element={<Profile />} />
+        <Route { AuthService.loggedIn() ? path= 'profile' : path='login'} element={<Profile />} />
         <Route path= 'sign-up' element={<Signup />} />
       </Routes>
     </BrowserRouter>
