@@ -48,13 +48,16 @@ function Signup(props) {
           </div>
           <div className="">
             <label htmlFor="role">Tell us your role:</label>
-            <input
+            <select
               placeholder="Role"
               name="role"
               type="role"
               id="role"
               onChange={handleChange}
-            />
+            >
+              <option value="pet owner">Pet Owner</option>
+              <option value="pet service worker">Pet Service Professional</option>
+            </select>
           </div>
           <div className="">
             <label htmlFor="email">Email:</label>
