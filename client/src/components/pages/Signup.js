@@ -15,7 +15,7 @@ function Signup(props) {
           email: formState.email,
           password: formState.password,
           role: formState.role,
-          username: formState.userame,
+          username: formState.username,
         },
       });
       const token = mutationResponse.data.addUser.token;
@@ -24,6 +24,8 @@ function Signup(props) {
   
     const handleChange = (event) => {
       const { name, value } = event.target;
+      console.log(name)
+      console.log(value)
       setFormState({
         ...formState,
         [name]: value,
@@ -49,15 +51,11 @@ function Signup(props) {
           </div>
           <div className="">
             <label htmlFor="role">Tell us your role:</label>
-            <select
-              placeholder="Role"
-              name="role"
-              type="role"
-              id="role"
-              onChange={handleChange}
-            >
-              <option value="pet owner">Pet Owner</option>
-              <option value="pet service worker">Pet Service Professional</option>
+            <select name="role" id="role" onChange={handleChange}>
+              <optgroup label="role">
+                <option value="pet owner">Pet Owner</option>
+                <option value="pet service worker">Pet Service Professional</option>
+              </optgroup>
             </select>
           </div>
           <div className="">

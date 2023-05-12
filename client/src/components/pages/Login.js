@@ -31,8 +31,8 @@ function Login(props) {
 
     return (
         <div className="container">
-            <Link to="/signup">← Go to Signup</Link>
-            <Link to="/">← Back to home</Link>
+            <Link to="/signup">Go to Signup</Link>
+            <Link to="/">Back to home</Link>
 
             <h2>Login</h2>
             <form onSubmit={handleFormSubmit}>
@@ -58,7 +58,7 @@ function Login(props) {
             </div>
             {error ? (
                 <div>
-                <p className="error-text">Oops! It looks like your credentials are incorrect. Please try again.</p>
+                <p className="error-text">Oops! Incorrect credentials. Please try again.</p>
                 </div>
             ) : null}
             <div className="">
