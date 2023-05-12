@@ -15,6 +15,7 @@ import Cart from "./components/pages/Cart";
 import Login from "./components/pages/Login"
 import Profile from "./components/pages/Profile"
 import Signup from "./components/pages/Signup"
+import CartProvider from './utils/CartContext';
 
 const httpLink = createHttpLink({
   uri: '/graphql'
