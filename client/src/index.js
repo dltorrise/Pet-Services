@@ -12,12 +12,12 @@ import { setContext } from '@apollo/client/link/context';
 
 import App from "./App";
 import Cart from "./components/pages/Cart";
-import Login from "./components/pages/Login"
-import Profile from "./components/pages/Profile"
-import Signup from "./components/pages/Signup"
+import Login from "./components/pages/Login";
+import Profile from "./components/pages/Profile";
+import Signup from "./components/pages/Signup";
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: '/graphql'
 });
 
 const authLink = setContext((_, { headers }) => {

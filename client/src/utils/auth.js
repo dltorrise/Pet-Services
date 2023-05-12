@@ -22,21 +22,17 @@ class AuthService {
   }
 
   getToken() {
-    // retrieve user token saved from localstorage
     return localStorage.getItem('id_token');
   }
 
   login(idToken) {
-    // save user token to localStorage
     localStorage.setItem('id_token', idToken);
 
     window.location.assign('/');
   }
 
   logout() {
-    // remove user token from local storage when logged out
     localStorage.removeItem('id_token');
-    // reload page and reset state
     window.location.assign('/');
   }
 }
