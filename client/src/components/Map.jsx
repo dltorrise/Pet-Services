@@ -68,7 +68,7 @@ export default function SimpleMap() {
         */}
       </select>
 
-      <div className= "map" style={{ height: "60vh" }}>
+      <div className= "map" style={{ height: "40vh" }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: "AIzaSyAa7Fs6zs5me7OX3Fx-K5cD9RYAxnHFw6Q" }}
           center={defaultProps.center}

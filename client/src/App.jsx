@@ -1,17 +1,16 @@
 import "./App.css";
 import Map from "./components/Map";
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import Login from './components/pages/Login'
-import Profile from './components/pages/Profile';
-import Cart from './components/pages/Cart'
-import AuthService from './utils/auth'
-import { QUERY_USER } from './utils/queries'
-import { useQuery, useMutation } from '@apollo/client';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Login from "./components/pages/Login";
+import Profile from "./components/pages/Profile";
+import Cart from "./components/pages/Cart";
+import AuthService from "./utils/auth";
+import { QUERY_USER } from "./utils/queries";
+import { useQuery, useMutation } from "@apollo/client";
 
 function App() {
   const { loading, data } = useQuery(QUERY_USER);
   return (
-    
     <>
       <header>
         <div class="container">
@@ -20,27 +19,48 @@ function App() {
               <span class="highlight">Pet</span> Services
             </h1>
           </div>
-          <nav   >
-          {AuthService.loggedIn() ? (<div><li><a href="/profile">Hello, {data.user.username}!</a></li><li onClick = {() => {AuthService.logout()}}>Logout</li></div>) : (<div><li class="current"><a href="/login">Login</a></li><li class="current"><a href="/sign-up">Sign up</a></li></div>)}
-              <li class="current">
-                <a href="/">Home</a>
-              </li>
-              <li class="current">
-                <a href="/cart">Cart</a>
-                {/* may need to change php extention */}
-                {/* php and react dont work together */}
-                {/* /react router  */}
-                <img
-                  src="https://cdn.vectorstock.com/i/1000x1000/70/12/add-to-cart-icon-adding-shopping-cart-vector-28487012.webp
+          <nav>
+            {AuthService.loggedIn() ? (
+              <div>
+                <li>
+                  <a href="/profile">Hello, {data.user.username}!</a>
+                </li>
+                <li
+                  onClick={() => {
+                    AuthService.logout();
+                  }}
+                >
+                  Logout
+                </li>
+              </div>
+            ) : (
+              <div>
+                <li class="current">
+                  <a href="/login">Login</a>
+                </li>
+                <li class="current">
+                  <a href="/sign-up">Sign up</a>
+                </li>
+              </div>
+            )}
+            <li class="current">
+              <a href="/">Home</a>
+            </li>
+            <li class="current">
+              <a href="/cart">Cart</a>
+              {/* may need to change php extention */}
+              {/* php and react dont work together */}
+              {/* /react router  */}
+              <img
+                src="https://cdn.vectorstock.com/i/1000x1000/70/12/add-to-cart-icon-adding-shopping-cart-vector-28487012.webp
              "
-                  width="20"
-                  height="20"
-                />
-              </li>
+                width="20"
+                height="20"
+              />
+            </li>
           </nav>
         </div>
       </header>
-
       <div className="row">
         <section id="showcase">
           <div class="container2">
@@ -75,10 +95,18 @@ function App() {
               width="150"
               height="150"
             />
-            {AuthService.loggedIn() ? (<div><p onClick = {() => {
-                localStorage.setItem("service", "dogwalking");
-                alert("Dog Walking Service Added to Cart");
-              }}>Add to Cart</p></div>) : (null)}
+            {AuthService.loggedIn() ? (
+              <div>
+                <p
+                  onClick={() => {
+                    localStorage.setItem("service", "dogwalking");
+                    alert("Dog Walking Service Added to Cart");
+                  }}
+                >
+                  Add to Cart
+                </p>
+              </div>
+            ) : null}
           </div>
           <div class="box">
             <h3>Pet Sitting</h3>
@@ -88,10 +116,18 @@ function App() {
               width="150"
               height="150"
             />
-            {AuthService.loggedIn() ? (<div><p onClick = {() => {
-                localStorage.setItem("service", "catSitting");
-                alert("cat sitting added to cart");
-              }}>Add to Cart</p></div>) : (null)}
+            {AuthService.loggedIn() ? (
+              <div>
+                <p
+                  onClick={() => {
+                    localStorage.setItem("service", "catSitting");
+                    alert("cat sitting added to cart");
+                  }}
+                >
+                  Add to Cart
+                </p>
+              </div>
+            ) : null}
             {/* <!-- <p>Find a cat sitter near you</p> --> */}
           </div>
           {/* <div class="box">
@@ -112,10 +148,18 @@ function App() {
               width="150"
               height="150"
             />
-                        {AuthService.loggedIn() ? (<div><p onClick = {() => {
-                localStorage.setItem("service", "petGrooming");
-                alert("pet grooming added to cart");
-              }}>Add to Cart</p></div>) : (null)}
+            {AuthService.loggedIn() ? (
+              <div>
+                <p
+                  onClick={() => {
+                    localStorage.setItem("service", "petGrooming");
+                    alert("pet grooming added to cart");
+                  }}
+                >
+                  Add to Cart
+                </p>
+              </div>
+            ) : null}
           </div>
           {/* <div class="box">
             <h3>Trainer</h3>
@@ -134,10 +178,18 @@ function App() {
               width="150"
               height="150"
             />
-            {AuthService.loggedIn() ? (<div><p onClick = {() => {
-                localStorage.setItem("service", "animalBoarding");
-                alert("pet grooming added to cart");
-              }}>Add to Cart</p></div>) : (null)}
+            {AuthService.loggedIn() ? (
+              <div>
+                <p
+                  onClick={() => {
+                    localStorage.setItem("service", "animalBoarding");
+                    alert("pet grooming added to cart");
+                  }}
+                >
+                  Add to Cart
+                </p>
+              </div>
+            ) : null}
           </div>
         </div>
       </section>
