@@ -1,13 +1,28 @@
 .row {
+  background-image: url(../public/assets/two.png);
+  background-size: 63%;
+  border-radius: 2%;
+  box-shadow: 0 0 1.5em #031a48;
+  opacity: 0.8;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-color: rgb(255, 255, 255);
+  opacity: 0.8;
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
-  background-color: rgb(47, 133, 198);
-  border-radius: 1%;
- 
+  padding: 0.5%;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
+
 body {
-  background-color: white;
   
+  background-image: url(../public/assets/pa.png);
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .box {
   display: inline-block;
@@ -42,6 +57,7 @@ body {
 
 svg {
   color: red;
+
 }
 #branding {
   color: rgb(47, 133, 198);
@@ -49,6 +65,7 @@ svg {
   font-size: 1.4em;
   text-align: center;
   text-transform: uppercase;
+  
 }
  #branding :hover {
   color: rgb(47, 133, 198);
@@ -56,19 +73,47 @@ svg {
   transition: 0.5s;
 }
 .current {
-  display: inline-flex;
-  justify-content: space-between;
-  padding-left: 3%;
-  border-radius: 1%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: block;
+  float: left;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 1.3em;
   font-weight: bolder;
-  font-size: 1.3em; 
-}
+} 
+ a:link {
+    color: darkgray;
+    text-decoration: none;
+  }
+
+ 
 .current :hover {
-  color: rgb(47, 133, 198);
+  color: rgb(58, 58, 106);
   transform: scale(1.1);
   transition: 0.5s;
   cursor: pointer;
 }
+
+/* .current {
+  
+  justify-content: space-between;
+  padding-left: 3%;
+  /* border-radius: 1%; */
+  /* font-weight: bolder;
+  font-size: 1.3em;  
+  text-transform: uppercase;
+  color: rgb(47, 133, 198);
+  width: 100%;
+  background-color: whitesmoke;
+  border-radius: 1%;
+  box-shadow: 0 0 1.5em #031a48;
+  
+} */
+ 
+
 #newsletter {
   padding-right: 5%;
   border-radius: 1%;
@@ -85,11 +130,13 @@ svg {
 .current1 {
   /* cart needs to be to the right */
   text-align: right;
-  ;
+  padding-right: 5%;
+  border-radius: 1%;
+  font-weight: bolder;
+  font-size: 1.0em;
 }
 .map {
-  width: 500px;
-
+  width: 300px;
 }
 @media only screen 
 and (min-device-width : 320px) 
@@ -107,6 +154,18 @@ body {
 #mission{
   width: 70vw;
   padding-right: 0%;
+}
+#newsletter {
+  width: 50vw;
+  padding-right: 0%;
+}
+#showcase {
+  width: 50vw;
+  padding-left: 0%;
+}
+.current {
+  width: 50vw;
+  padding-left: 0%;
 }
   /* Styles */
 }

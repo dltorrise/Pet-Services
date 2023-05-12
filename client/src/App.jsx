@@ -9,14 +9,10 @@ import { QUERY_USER } from './utils/queries'
 import { useQuery, useMutation } from '@apollo/client';
 import { useCart } from './utils/CartContext';
 
-
-
-
 function App() {
   const {addToCart} = useCart();
   const { loading, data } = useQuery(QUERY_USER);
   return (
-    
     <>
       <header>
         <div class="container">
@@ -25,7 +21,7 @@ function App() {
               <span class="highlight">Pet</span> Services
             </h1>
           </div>
-          <nav   >
+          <nav>
           {/* {AuthService.loggedIn() ? (<div><li><a href="/profile">Hello, {data.user.username}!</a></li><li onClick = {() => {AuthService.logout()}}>Logout</li></div>) : (<div><li class="current"><a href="/login">Login</a></li><li class="current"><a href="/sign-up">Sign up</a></li></div>)} */}
               <li class="current">
                 <a href="/">Home</a>
@@ -36,16 +32,14 @@ function App() {
                 {/* php and react dont work together */}
                 {/* /react router  */}
                 <img
-                  src="https://cdn.vectorstock.com/i/1000x1000/70/12/add-to-cart-icon-adding-shopping-cart-vector-28487012.webp
-             "
-                  width="20"
-                  height="20"
-                />
-              </li>
+                  src="https://cdn.vectorstock.com/i/1000x1000/70/12/add-to-cart-icon-adding-shopping-cart-vector-28487012.webp"
+                width="20"
+                height="20"
+              />
+            </li>
           </nav>
         </div>
       </header>
-
       <div className="row">
         <section id="showcase">
           <div class="container2">
