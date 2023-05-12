@@ -1,23 +1,31 @@
-import React from 'react';
+import React, { useState } from 'react';
 //this is the cart page and will be used to display the cart
+import { useCart } from '../../utils/CartContext'
 
 // import { useQuery } from '@apollo/client';
-const prices = {
-    dogwalking: 20,
-    birdSitting:30,
-    catSitting: 40,
-}
-const Cart = () => { 
-    const services= localStorage.getItem('service')    
+// const prices = {
+//     dogWalking: 20,
+//     petSitting:30,
+//     petGrooming: 40,
+//     animalBoarding: 20,
+// }
+
+const Cart = () => {
+    const { clearCart, cartContents } = useCart()
+    console.log(cartContents)
     return (
         <div>
-            <h1>Cart</h1> 
-            {services} - ${prices[services]}
-        </div>
-    )
-}
+            <h1>Cart</h1>
+            <ul>
+                {cartContents.map((item) => (
+                    <li>{item}</li>
+                ))}
+            </ul>
+            {cartContents.length ? (<button onClick={() => {clearCart()
+                document.location.reload()}}>Purchase</button>) : (<p>There is nothing in your cart!</p>)}
+        </div>   
+    )  
+}  
+  
+ 
 export default Cart
-
-//it needs be storaged in the local storage
-// it maybe better to complete services page and create system so the produts can be added to the cart
-// create a checkout page
