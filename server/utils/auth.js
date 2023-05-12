@@ -19,8 +19,8 @@ module.exports = {
     }
 
     try {
-      const { data } = jwt.verify(token, process.env.SECRET, { maxAge: process.env.EXPIRATION });
-      // use process.env.SECRET, process.env.EXPIRATION
+      const { data } = jwt.verify(token, secret, { maxAge: expiration });
+      // switch to process.env.SECRET, process.env.EXPIRATION
       req.user = data;
     } catch {
       console.log('Invalid token');
@@ -32,6 +32,6 @@ module.exports = {
     const payload = { username, email, _id };
 
     return jwt.sign({ data: payload }, secret, { expiresIn: expiration });
-    // use process.env.SECRET, process.env.EXPIRATION
+    // switch to process.env.SECRET, process.env.EXPIRATION
   },
 };
