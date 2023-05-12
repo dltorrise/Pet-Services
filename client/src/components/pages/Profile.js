@@ -3,6 +3,7 @@ import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER } from '../../utils/queries'
 import AuthService from '../../utils/auth'
 import { ADD_PET } from '../../utils/mutations'
+import errorImage from '../../assets/404-bark.jpg'
 
 const Profile = () => {
   // Query user data from the server
@@ -46,18 +47,31 @@ const Profile = () => {
   // If the user is not logged in, display a message to prompt them to log in
   if (!loggedIn) {
     return (
-      <h2>You need to be logged in to view this page. Please log in.</h2>
+      <div className="error-message">
+        <h2>You need to be logged in to view this page. Please log in.</h2>
+        <img src={errorImage} alt="404 Error" />
+        <div className="button-container">
+          <a href="/" className="button">Home</a>
+          <a href="/login" className="button">Login</a>
+        </div>
+      </div>
     )
   }
+  
+  // If the user is logged in and the data is still loading, display a loading message
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
 
-  // If the user is logged in, display their username and list of pets
+  // Otherwise, display the user's username and list of pets
+  const { user } = data;
   return (
     <div>
-      <h1>Welcome {data.user.username}!</h1>
+      <h1>Welcome {user.username}!</h1>
       <p>Here are your registered pets:</p>
       <div id="pets">
         <ul>
-          {data.user.pets.map((pet) => (
+          {user.pets.map((pet) => (
             <li key={pet._id}>
               <h3>{pet.name}</h3>
               <p>{pet.type}</p>
