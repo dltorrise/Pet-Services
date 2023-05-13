@@ -6,7 +6,7 @@ import { ADD_USER } from '../../utils/mutations';
 
 function Signup(props) {
     const [formState, setFormState] = useState({ email: '', password: '' });
-    const [addUser] = useMutation(ADD_USER);
+    const [addUser, { error }] = useMutation(ADD_USER);
   
     const handleFormSubmit = async (event) => {
       event.preventDefault();
@@ -24,8 +24,6 @@ function Signup(props) {
   
     const handleChange = (event) => {
       const { name, value } = event.target;
-      console.log(name)
-      console.log(value)
       setFormState({
         ...formState,
         [name]: value,
@@ -53,6 +51,7 @@ function Signup(props) {
             <label htmlFor="role">Tell us your role:</label>
             <select name="role" id="role" onChange={handleChange}>
               <optgroup label="role">
+                <option disabled selected value> -- select an option -- </option>
                 <option value="pet owner">Pet Owner</option>
                 <option value="pet service worker">Pet Service Professional</option>
               </optgroup>
@@ -81,6 +80,11 @@ function Signup(props) {
           <div className="">
             <button type="submit">Submit</button>
           </div>
+          {error ? (
+                <div>
+                <p className="error-text">Oops! Please fill in all required fields and try again.</p>
+                </div>
+            ) : null}
         </form>
       </div>
     )

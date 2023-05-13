@@ -30,7 +30,8 @@ function Login(props) {
       };
 
     return (
-        <div className="container">
+      <div className="login-container">
+        <div className="">
             <Link to="/signup">Go to Signup</Link>
             <Link to="/">Back to home</Link>
 
@@ -56,16 +57,21 @@ function Login(props) {
                     onChange={handleChange}
                 />
             </div>
+            
+            <div className="">
+                <button type="submit" className="text-white bg-blue-500 hover:bg-blue-600 focus:outline-none font-medium text-sm rounded-lg px-5 py-2.5 text-center mr-5">
+                  Submit
+                </button>
+            </div>
+            
             {error ? (
                 <div>
                 <p className="error-text">Oops! Incorrect credentials. Please try again.</p>
                 </div>
             ) : null}
-            <div className="">
-                <button type="submit">Submit</button>
-            </div>
             </form>
         </div>
+      </div>
     );
 }  
 

@@ -9,7 +9,7 @@ const resolvers = {
     user: async (parent, args, context) => {
       if (context.user) {
         return User.findById(context.user._id).populate('pets');
-      }
+       }
       throw new AuthenticationError('You need to be logged in!');
     },
 

@@ -17,6 +17,7 @@ const typeDefs = gql`
     age: Int!
     type: String!
     owner: User!
+    image: String!
   }
 
   type Product {
