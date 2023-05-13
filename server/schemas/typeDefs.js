@@ -14,10 +14,10 @@ const typeDefs = gql`
     name: String!
     breed: String!
     description: String
-    age: Int!
+    age: String!
     type: String!
-    owner: User!
-    image: String!
+    owner: String!
+    image: String
   }
 
   type Product {
@@ -52,7 +52,7 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!, role: String!): Auth
-    addPet(name: String!, breed: String!, age: Int!, type: String!, owner: ID!): Pet
+    addPet(name: String!, breed: String!, age: String!, type: String!, owner: String!, image: String): Pet
     order(purchaseDate: String!, products: [ID]!): Order
     updateProduct(_id: ID!, quantity: Int!): Product
   }

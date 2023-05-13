@@ -56,7 +56,7 @@ function App() {
                     <div>
                       <li className="current">
                       <button 
-                        className= ' text-white bg-blue-500 hover:bg-blue-600 focus:outline-none font-medium text-sm rounded-lg px-5 py-2.5 text-center mr-5'
+                        className =''
                         onClick={() => setModal(true)}
                       >
                         Sign up/Log in

@@ -12,9 +12,7 @@ import { setContext } from '@apollo/client/link/context';
 
 import App from "./App";
 import Cart from "./components/pages/Cart";
-import Login from "./components/pages/Login";
-import Profile from "./components/pages/Profile"
-import Signup from "./components/pages/Signup"
+import Profile from "./components/pages/Profile";
 import CartProvider from './utils/CartContext';
 
 const httpLink = createHttpLink({
@@ -43,9 +41,9 @@ return (
             <CartProvider>
             <Routes>
               <Route index element={<App />} />
-              <Route path= '/cart' element={ AuthService.loggedIn() ? <Cart /> : <Navigate to="/login"/> } /> 
+              <Route path= '/cart' element={ AuthService.loggedIn() ? <Cart /> : <Navigate to="/"/> } /> 
               <Route path= '/cart' element={<Cart />} />
-              <Route path= '/profile' element={ AuthService.loggedIn() ? <Profile /> : <Navigate to="/login"/> } />
+              <Route path= '/profile' element={ AuthService.loggedIn() ? <Profile /> : <Navigate to="/"/> } />
               <Route path= '/profile' element={<Profile />} /> 
             </Routes>
             </CartProvider>
