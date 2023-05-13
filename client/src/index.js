@@ -36,19 +36,24 @@ const client = new ApolloClient({
 
 export default function Index() {
 return (
-    <BrowserRouter>
-          <ApolloProvider client={client}>
-            <CartProvider>
-            <Routes>
-              <Route index element={<App />} />
-              <Route path= '/cart' element={ AuthService.loggedIn() ? <Cart /> : <Navigate to="/"/> } /> 
-              <Route path= '/cart' element={<Cart />} />
-              <Route path= '/profile' element={ AuthService.loggedIn() ? <Profile /> : <Navigate to="/"/> } />
-              <Route path= '/profile' element={<Profile />} /> 
-            </Routes>
-            </CartProvider>
-          </ApolloProvider>
-      </BrowserRouter>
+  
+<BrowserRouter>
+      <ApolloProvider client={client}>
+        <CartProvider>
+        <Routes>
+          <Route index element={<App />} />
+          <Route path= '/cart' element={ AuthService.loggedIn() ? <Cart /> : <Navigate to="/login"/> } />
+          {/* For testing purposes only
+          <Route path= '/cart' element={<Cart />} /> */}
+          <Route path= '/profile' element={ AuthService.loggedIn() ? <Profile /> : <Navigate to="/login"/> } />
+          {/* For testing purposes only
+          <Route path= '/profile' element={<Profile />} /> */}
+          <Route path= '/login' element={<Login />} />
+          <Route path= '/signup' element={<Signup />} />
+        </Routes>
+        </CartProvider>
+      </ApolloProvider>
+    </BrowserRouter>
 );
 }
 const root = ReactDOM.createRoot(document.getElementById("root"));

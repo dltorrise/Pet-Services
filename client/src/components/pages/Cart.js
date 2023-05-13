@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 //this is the cart page and will be used to display the cart
 import { useCart } from '../../utils/CartContext'
+import { Link } from 'react-router-dom';
 
 // import { useQuery } from '@apollo/client';
 // const prices = {
@@ -14,15 +15,17 @@ const Cart = () => {
     const { clearCart, cartContents } = useCart()
     console.log(cartContents)
     return (
-        <div>
-            <h1>Cart</h1>
-            <ul>
+        <div id="cart-container">
+            <h1 id="cart-title">Cart</h1>
+            <div id="item-container">
                 {cartContents.map((item) => (
-                    <li>{item}</li>
+                    <h3 class="cart-item">{item}</h3>
                 ))}
-            </ul>
-            {cartContents.length ? (<button onClick={() => {clearCart()
-                document.location.reload()}}>Purchase</button>) : (<p>There is nothing in your cart!</p>)}
+            </div>
+            {cartContents.length ? (<button id="purchase-button" onClick={() => {clearCart()
+            alert("Thank you for your purchase!")
+                document.location.reload()}}>Purchase</button>) : (<p id="cart-message">There is nothing in your cart!</p>)}
+                  <Link to="/" id="home-button-cart">	&lt;-- Back to home</Link>
         </div>   
     )  
 }  

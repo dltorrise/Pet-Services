@@ -112,16 +112,16 @@ function App() {
               src="https://www.banfield.com/-/media/Project/Banfield/Main/en/Wellness_at_Banfield/Puppy_Hub/Puppy_Hub_6-7_months/0994_18_Banner_Animation_new.gif?rev=690d3ae4ca624d2f92f38ae5fd80ea7f"
               width="150"
               height="150"
-              alt="Dog walking representing a service"
-              onClick = {() => {
-                localStorage.setItem("service", "dogWalking");
-                alert("Dog Walking Service Added to Cart");
-              }}
+              // For testing purposes only
+              // onClick = { () => {
+              //   addToCart("Dog Walking - $10/hour")
+              //   alert("Dog Walking Added to Cart");
+              // }}
             />
-            {AuthService.loggedIn() ? (<div><p onClick = {() => {
-                localStorage.setItem("service", "dogwalking");
-                alert("Dog Walking Service Added to Cart");
-              }}>Add to Cart</p></div>) : (null)} 
+            {AuthService.loggedIn() ? (<div><p onClick = { () => {
+                addToCart("Dog Walking - $10/hour")
+                alert("Dog Walking Added to Cart");
+              }}>Add to Cart</p></div>) : (null)}
           </div>
           <div className="box">
             <h3>Pet Sitting</h3>
@@ -132,28 +132,17 @@ function App() {
               height="150"
               alt="Pet sitting representing a service"
               // For testing purposes only
-              onClick = {() => {
-                localStorage.setItem("service", "petSitting");
+              // onClick = { () => {
+              //   addToCart("Pet Sitting - $15/hour")
+              //   alert("Pet Sitting Added to Cart");
+              // }}
+            />
+            {AuthService.loggedIn() ? (<div><p onClick = { () => {
+                addToCart("Pet Sitting - $15/hour")
                 alert("Pet Sitting Added to Cart");
-              }}
-            />
-            {/* {AuthService.loggedIn() ? (<div><p onClick = {() => {
-                localStorage.setItem("service", "catSitting");
-                alert("cat sitting added to cart");
-              }}>Add to Cart</p></div>) : (null)} */}
-            {/* <!-- <p>Find a cat sitter near you</p> --> */}
+              }}>Add to Cart</p></div>) : (null)}
           </div>
-          {/* <div className="box">
-            <h3>Bird Sitting</h3>
-            <img
-              className="servicebox"
-              src="https://cdn.dribbble.com/users/330915/screenshots/1551973/media/3c192a543807b62e9597129e7bdb0950.gif
-          "
-              width="150"
-              height="150"
-            />
-          </div> */}
-          <div className="box">
+          <div class="box">
             <h3>Pet Grooming</h3>
             <img
               className="servicebox"
@@ -162,26 +151,17 @@ function App() {
               height="150"
               alt="Pet grooming representing a service"
               // For testing purposes only
-              onClick = {() => {
-                localStorage.setItem("service", "petGrooming");
+              // onClick = { () => {
+              //   addToCart("Pet Grooming - $10/hour")
+              //   alert("Pet Grooming Added to Cart");
+              // }}
+            />
+            {AuthService.loggedIn() ? (<div><p onClick = { () => {
+                addToCart("Pet Grooming - $10/hour")
                 alert("Pet Grooming Added to Cart");
-              }}
-            />
-            {/* {AuthService.loggedIn() ? (<div><p onClick = {() => {
-                localStorage.setItem("service", "petGrooming");
-                alert("pet grooming added to cart");
-              }}>Add to Cart</p></div>) : (null)} */}
+              }}>Add to Cart</p></div>) : (null)}
           </div>
-          {/* <div className="box">
-            <h3>Trainer</h3>
-            <img
-              className="servicebox"
-              src="https://cdn.dribbble.com/users/1771704/screenshots/10736771/media/47e460e65f4055417eb9683e66b41fe7.gif"
-              width="150"
-              height="150"
-            />
-          </div> */}
-          <div className="box">
+          <div class="box">
             <h3>Animal Boarding</h3>
             <img
               className="servicebox"
@@ -190,21 +170,19 @@ function App() {
               height="150"
               alt="Animal boarding representing a service"
               // For testing purposes only
-              onClick = { () => {
-                addToCart("Animal Boarding")
-                // localStorage.setItem("cartContents", cartContents);
-                alert("Animal Boarding Added to Cart");
-              }}
+              // onClick = { () => {
+              //   addToCart("Animal Boarding - $20/night")
+              //   alert("Animal Boarding Added to Cart");
+              // }}
             />
-            {/* {AuthService.loggedIn() ? (<div><p onClick = {() => {
-                localStorage.setItem("service", "animalBoarding");
-                alert("pet grooming added to cart");
-              }}>Add to Cart</p></div>) : (null)} */}
+            {AuthService.loggedIn() ? (<div><p onClick = { () => {
+                addToCart("Animal Boarding - $20/night")
+                alert("Animal Boarding Added to Cart");
+              }}>Add to Cart</p></div>) : (null)}
           </div>
         </div>
       </section>
       {/* <!-- Mission statment --> */}
-
       <section id="mission">
         <h4 className="h4title">Our Mission</h4>
         <div className="container5">
