@@ -1,13 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Signup from './Signup';
 import Login from './Login';
+import { ModalContext } from '../../App';
 
-const Modal = ({isVisible, onClose, flipSwitchModal, switchModal}) => {
+const Modal = ( ) => {
+
+  const { switchModal } = useContext(ModalContext);
+
   return (
     <div>
-        {!flipSwitchModal ?
-            <Login isVisible = {isVisible} onClose={onClose} flipSwitchModal={flipSwitchModal} switchModal={switchModal} /> :
-            <Signup isVisible = {isVisible} onClose={onClose} flipSwitchModal={flipSwitchModal} switchModal={switchModal} />
+        {!switchModal ?
+            <Signup /> :
+            <Login />
         }
     </div>
   );

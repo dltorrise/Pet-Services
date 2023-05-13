@@ -1,8 +1,7 @@
 import "./App.css";
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, createContext } from 'react';
 import Map from "./components/Map";
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-// import Login from './components/pages/Login';
 import Modal from './components/pages/Modal';
 import Profile from './components/pages/Profile';
 import Cart from './components/pages/Cart'
@@ -11,12 +10,14 @@ import { QUERY_USER } from './utils/queries'
 import { useQuery, useMutation } from '@apollo/client';
 import { useCart } from './utils/CartContext';
 
+// default value
+export const ModalContext = createContext();
+
 function App() {
 
-  // const [showLogIn, setLogIn] = useState(false);
   const [showModal, setModal] = useState(false);
   const [switchModal, flipSwitchModal] = useState(false);
-  console.log(switchModal);
+  // console.log(switchModal);
   
   const { addToCart } = useCart();
   const { loading, data } = useQuery(QUERY_USER);
@@ -53,14 +54,6 @@ function App() {
                   : 
                   (
                     <div>
-                      {/* <li className="current">
-                      <button 
-                        className= ' text-white bg-blue-500 hover:bg-blue-600 focus:outline-none font-medium text-sm rounded-lg px-5 py-2.5 text-center mr-5'
-                        onClick={() => setLogIn(true)}
-                      >
-                        Log in
-                      </button>
-                      </li> */}
                       <li className="current">
                       <button 
                         className= ' text-white bg-blue-500 hover:bg-blue-600 focus:outline-none font-medium text-sm rounded-lg px-5 py-2.5 text-center mr-5'
@@ -239,8 +232,9 @@ function App() {
           </p>
         </div>
       </footer>
-      {/* <Login isVisible = {showLogIn} onClose={()=> setLogIn(false)} switchModal={switchModal} flipSwitchModal={flipSwitchModal} /> */}
-      <Modal isVisible = {showModal} onClose={()=> setModal(false)} switchModal={switchModal} flipSwitchModal={flipSwitchModal} />
+      <ModalContext.Provider value = {{showModal, setModal, switchModal, flipSwitchModal}}>
+        <Modal />
+      </ ModalContext.Provider>    
     </>
     </Fragment>
   );
