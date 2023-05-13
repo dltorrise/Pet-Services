@@ -1,8 +1,9 @@
 import "./App.css";
-import { Fragment } from 'react';
+import React, { useState, Fragment } from 'react';
 import Map from "./components/Map";
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Login from './components/pages/Login'
+// import Login from './components/pages/Login';
+import Modal from './components/pages/Modal';
 import Profile from './components/pages/Profile';
 import Cart from './components/pages/Cart'
 import AuthService from './utils/auth'
@@ -11,10 +12,17 @@ import { useQuery, useMutation } from '@apollo/client';
 import { useCart } from './utils/CartContext';
 
 function App() {
-  const {addToCart} = useCart();
+
+  // const [showLogIn, setLogIn] = useState(false);
+  const [showModal, setModal] = useState(false);
+  const [switchModal, flipSwitchModal] = useState(false);
+  console.log(switchModal);
+  
+  const { addToCart } = useCart();
   const { loading, data } = useQuery(QUERY_USER);
   
   return (
+    <Fragment>
     <>
       <header>
         <div className="container">
@@ -45,15 +53,21 @@ function App() {
                   : 
                   (
                     <div>
+                      {/* <li className="current">
+                      <button 
+                        className= ' text-white bg-blue-500 hover:bg-blue-600 focus:outline-none font-medium text-sm rounded-lg px-5 py-2.5 text-center mr-5'
+                        onClick={() => setLogIn(true)}
+                      >
+                        Log in
+                      </button>
+                      </li> */}
                       <li className="current">
-                        <a href="/login">
-                          Login
-                        </a>
-                      </li>
-                      <li className="current">
-                        <a href="/signup">
-                          Sign up
-                        </a>
+                      <button 
+                        className= ' text-white bg-blue-500 hover:bg-blue-600 focus:outline-none font-medium text-sm rounded-lg px-5 py-2.5 text-center mr-5'
+                        onClick={() => setModal(true)}
+                      >
+                        Sign up/Log in
+                      </button>
                       </li>
                     </div>)}
 
@@ -62,13 +76,11 @@ function App() {
               </li>
               <li className="current">
                 <Link to ="/cart">Cart</Link>
-                {/* may need to change php extention */}
-                {/* php and react dont work together */}
-                {/* /react router  */}
                 <img
                   src="https://cdn.vectorstock.com/i/1000x1000/70/12/add-to-cart-icon-adding-shopping-cart-vector-28487012.webp"
                   width="20"
                   height="20"
+                  alt="Shopping cart"
               />
             </li>
           </nav>
@@ -107,16 +119,16 @@ function App() {
               src="https://www.banfield.com/-/media/Project/Banfield/Main/en/Wellness_at_Banfield/Puppy_Hub/Puppy_Hub_6-7_months/0994_18_Banner_Animation_new.gif?rev=690d3ae4ca624d2f92f38ae5fd80ea7f"
               width="150"
               height="150"
-              // For testing purposes only
+              alt="Dog walking representing a service"
               onClick = {() => {
                 localStorage.setItem("service", "dogWalking");
                 alert("Dog Walking Service Added to Cart");
               }}
             />
-            {/* {AuthService.loggedIn() ? (<div><p onClick = {() => {
+            {AuthService.loggedIn() ? (<div><p onClick = {() => {
                 localStorage.setItem("service", "dogwalking");
                 alert("Dog Walking Service Added to Cart");
-              }}>Add to Cart</p></div>) : (null)} */}
+              }}>Add to Cart</p></div>) : (null)} 
           </div>
           <div className="box">
             <h3>Pet Sitting</h3>
@@ -125,6 +137,7 @@ function App() {
               src="https://thumbs.dreamstime.com/b/cute-cartoon-cat-sitting-smiling-little-vector-illustration-sketch-152283646.jpg"
               width="150"
               height="150"
+              alt="Pet sitting representing a service"
               // For testing purposes only
               onClick = {() => {
                 localStorage.setItem("service", "petSitting");
@@ -154,6 +167,7 @@ function App() {
               src="https://thumbs.dreamstime.com/b/dog-grooming-logo-design-template-pawprint-comb-scissors-vector-clipart-drawing-isolated-illustration-white-background-217266808.jpg"
               width="150"
               height="150"
+              alt="Pet grooming representing a service"
               // For testing purposes only
               onClick = {() => {
                 localStorage.setItem("service", "petGrooming");
@@ -181,6 +195,7 @@ function App() {
               src="https://www.universityplacevet.com/wp-content/uploads/sites/13/2018/10/logobig.png"
               width="150"
               height="150"
+              alt="Animal boarding representing a service"
               // For testing purposes only
               onClick = { () => {
                 addToCart("Animal Boarding")
@@ -224,7 +239,10 @@ function App() {
           </p>
         </div>
       </footer>
+      {/* <Login isVisible = {showLogIn} onClose={()=> setLogIn(false)} switchModal={switchModal} flipSwitchModal={flipSwitchModal} /> */}
+      <Modal isVisible = {showModal} onClose={()=> setModal(false)} switchModal={switchModal} flipSwitchModal={flipSwitchModal} />
     </>
+    </Fragment>
   );
 }
 
