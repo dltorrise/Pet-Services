@@ -44,11 +44,11 @@ return (
         <CartProvider>
         <Routes>
           <Route index element={<App />} />
-          {/* <Route path= '/cart' element={ AuthService.loggedIn() ? <Cart /> : <Navigate to="/login"/> } /> */}
-          {/* For testing purposes */}
-          <Route path= '/cart' element={<Cart />} />
+          <Route path= '/cart' element={ AuthService.loggedIn() ? <Cart /> : <Navigate to="/login"/> } />
+          {/* For testing purposes only
+          <Route path= '/cart' element={<Cart />} /> */}
           <Route path= '/profile' element={ AuthService.loggedIn() ? <Profile /> : <Navigate to="/login"/> } />
-          {/* For testing purposes
+          {/* For testing purposes only
           <Route path= '/profile' element={<Profile />} /> */}
           <Route path= '/login' element={<Login />} />
           <Route path= '/signup' element={<Signup />} />

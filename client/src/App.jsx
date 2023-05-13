@@ -22,15 +22,12 @@ function App() {
             </h1>
           </div>
           <nav>
-          {/* {AuthService.loggedIn() ? (<div><li><a href="/profile">Hello, {data.user.username}!</a></li><li onClick = {() => {AuthService.logout()}}>Logout</li></div>) : (<div><li class="current"><a href="/login">Login</a></li><li class="current"><a href="/sign-up">Sign up</a></li></div>)} */}
+          {AuthService.loggedIn() ? (<div><li><a href="/profile">Hello, {data.user.username}!</a></li><li onClick = {() => {AuthService.logout()}}>Logout</li></div>) : (<div><li class="current"><a href="/login">Login</a></li><li class="current"><a href="/sign-up">Sign up</a></li></div>)}
               <li class="current">
                 <a href="/">Home</a>
               </li>
               <li class="current">
                 <Link to ="/cart">Cart</Link>
-                {/* may need to change php extention */}
-                {/* php and react dont work together */}
-                {/* /react router  */}
                 <img
                   src="https://cdn.vectorstock.com/i/1000x1000/70/12/add-to-cart-icon-adding-shopping-cart-vector-28487012.webp"
                 width="20"
@@ -74,15 +71,15 @@ function App() {
               width="150"
               height="150"
               // For testing purposes only
-              onClick = {() => {
-                localStorage.setItem("service", "dogWalking");
-                alert("Dog Walking Service Added to Cart");
-              }}
+              // onClick = { () => {
+              //   addToCart("Dog Walking - $10/hour")
+              //   alert("Dog Walking Added to Cart");
+              // }}
             />
-            {/* {AuthService.loggedIn() ? (<div><p onClick = {() => {
-                localStorage.setItem("service", "dogwalking");
-                alert("Dog Walking Service Added to Cart");
-              }}>Add to Cart</p></div>) : (null)} */}
+            {AuthService.loggedIn() ? (<div><p onClick = { () => {
+                addToCart("Dog Walking - $10/hour")
+                alert("Dog Walking Added to Cart");
+              }}>Add to Cart</p></div>) : (null)}
           </div>
           <div class="box">
             <h3>Pet Sitting</h3>
@@ -92,27 +89,16 @@ function App() {
               width="150"
               height="150"
               // For testing purposes only
-              onClick = {() => {
-                localStorage.setItem("service", "petSitting");
+              // onClick = { () => {
+              //   addToCart("Pet Sitting - $15/hour")
+              //   alert("Pet Sitting Added to Cart");
+              // }}
+            />
+            {AuthService.loggedIn() ? (<div><p onClick = { () => {
+                addToCart("Pet Sitting - $15/hour")
                 alert("Pet Sitting Added to Cart");
-              }}
-            />
-            {/* {AuthService.loggedIn() ? (<div><p onClick = {() => {
-                localStorage.setItem("service", "catSitting");
-                alert("cat sitting added to cart");
-              }}>Add to Cart</p></div>) : (null)} */}
-            {/* <!-- <p>Find a cat sitter near you</p> --> */}
+              }}>Add to Cart</p></div>) : (null)}
           </div>
-          {/* <div class="box">
-            <h3>Bird Sitting</h3>
-            <img
-              class="servicebox"
-              src="https://cdn.dribbble.com/users/330915/screenshots/1551973/media/3c192a543807b62e9597129e7bdb0950.gif
-          "
-              width="150"
-              height="150"
-            />
-          </div> */}
           <div class="box">
             <h3>Pet Grooming</h3>
             <img
@@ -121,25 +107,16 @@ function App() {
               width="150"
               height="150"
               // For testing purposes only
-              onClick = {() => {
-                localStorage.setItem("service", "petGrooming");
+              // onClick = { () => {
+              //   addToCart("Pet Grooming - $10/hour")
+              //   alert("Pet Grooming Added to Cart");
+              // }}
+            />
+            {AuthService.loggedIn() ? (<div><p onClick = { () => {
+                addToCart("Pet Grooming - $10/hour")
                 alert("Pet Grooming Added to Cart");
-              }}
-            />
-            {/* {AuthService.loggedIn() ? (<div><p onClick = {() => {
-                localStorage.setItem("service", "petGrooming");
-                alert("pet grooming added to cart");
-              }}>Add to Cart</p></div>) : (null)} */}
+              }}>Add to Cart</p></div>) : (null)}
           </div>
-          {/* <div class="box">
-            <h3>Trainer</h3>
-            <img
-              class="servicebox"
-              src="https://cdn.dribbble.com/users/1771704/screenshots/10736771/media/47e460e65f4055417eb9683e66b41fe7.gif"
-              width="150"
-              height="150"
-            />
-          </div> */}
           <div class="box">
             <h3>Animal Boarding</h3>
             <img
@@ -148,21 +125,19 @@ function App() {
               width="150"
               height="150"
               // For testing purposes only
-              onClick = { () => {
-                addToCart("Animal Boarding")
-                // localStorage.setItem("cartContents", cartContents);
-                alert("Animal Boarding Added to Cart");
-              }}
+              // onClick = { () => {
+              //   addToCart("Animal Boarding - $20/night")
+              //   alert("Animal Boarding Added to Cart");
+              // }}
             />
-            {/* {AuthService.loggedIn() ? (<div><p onClick = {() => {
-                localStorage.setItem("service", "animalBoarding");
-                alert("pet grooming added to cart");
-              }}>Add to Cart</p></div>) : (null)} */}
+            {AuthService.loggedIn() ? (<div><p onClick = { () => {
+                addToCart("Animal Boarding - $20/night")
+                alert("Animal Boarding Added to Cart");
+              }}>Add to Cart</p></div>) : (null)}
           </div>
         </div>
       </section>
       {/* <!-- Mission statment --> */}
-
       <section id="mission">
         <h4 class="h4title">Our Mission</h4>
         <div class="container5">
