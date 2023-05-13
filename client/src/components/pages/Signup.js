@@ -54,7 +54,7 @@ function Signup ( ) {
           id="wrapper"
           onClick={handleClose}
         >
-          <div className="md:w-[600px] w-[90%] mx-auto flex flex-col sm:w-[100px] sm:w=h-[100px]">
+          <div className="md:w-[600px] w-[90%] mx-auto flex flex-col">
 
         <div className=' bg-white p-12 rounded flex flex-col' >
         <button 
@@ -64,24 +64,23 @@ function Signup ( ) {
           X
         </button>
         <div className='py-6 px-6 lg:px-8 text-left'>
-            
-        <h3 
-          className='pb-3'
-        >
-                Already a user? Please log in instead!
-        </h3>
-
-        <button 
-          onClick={()=> {
-            if (switchModal === false){
-              flipSwitchModal(true);
-            } else {
-              flipSwitchModal(false);
-            }
-          }}
-        >
-          Switch
-        </button>
+        
+        <div className='flex flex-row-reverse'>
+                <button 
+                  className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-purple-900 underline"
+                 onClick={()=> {
+                    if (switchModal === false){
+                      flipSwitchModal(true);
+                    } else {
+                      flipSwitchModal(false);
+                    }
+                  }} 
+                >
+                    <span>
+                      Log In
+                    </span>
+                  </button>
+              </ div>
 
         <h2
           className='mb-4 text-xl font-medium test-gray-900'
@@ -90,7 +89,7 @@ function Signup ( ) {
         </h2>
         <form 
           onSubmit={handleFormSubmit}
-          className='space-y-6 sm:space-y-1'
+          className='space-y-6'
         >
           <div>
             <label 
@@ -166,7 +165,7 @@ function Signup ( ) {
           <div className="pt-3">
             <button 
               type="submit"
-              className="text-white bg-blue-500 hover:bg-blue-600 focus:outline-none font-medium text-sm rounded-lg px-5 py-2.5 text-center mr-5"
+              className="text-white bg-gradient-to-br from-green-400 to-blue-600 hover:bg-gradient-to-bl focus:outline-none focus:ring-green-200 dark:focus:ring-green-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
             >
               Sign up
             </button>
