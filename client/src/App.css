@@ -242,3 +242,40 @@ body {
 }
 
 
+/* cart css */
+
+#cart-container {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+}
+
+#cart-title {
+  text-align: center;
+}
+
+#item-container {
+  align-self: center;
+}
+
+.cart-item {
+  outline: 2px solid gold;
+  width: 200px;
+  height: 60px;
+  text-align: center;
+  padding: 10px;
+}
+
+#cart-message {
+  text-align: center;
+}
+
+#purchase-button {
+  width: 100px;
+  align-self: center;
+}
+
+#home-button-cart {
+  margin-top: 20px;
+  text-align: center;
+}
