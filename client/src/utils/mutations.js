@@ -55,9 +55,10 @@ export const ADD_PET = gql`
   mutation addPet(
     $name: String!
     $breed: String!
-    $age: Int!
+    $age: String!
     $type: String!
-    $owner: ID!
+    $owner: String!
+    $image: String
   ) {
     addPet(
       name: $name
@@ -65,10 +66,13 @@ export const ADD_PET = gql`
       age: $age
       type: $type
       owner: $owner
+      image: $image
     ) {
-      pet {
-        _id
-      }
+      _id
+      age
+      breed
+      image
+      name
     }
   }
 `;

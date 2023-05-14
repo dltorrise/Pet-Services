@@ -1,3 +1,7 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .row {
   background-image: url(../public/assets/two.png);
   background-size: 63%;

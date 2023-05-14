@@ -1,7 +1,8 @@
 import "./App.css";
+import React, { useState, Fragment, createContext } from 'react';
 import Map from "./components/Map";
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
-import Login from './components/pages/Login'
+import Modal from './components/pages/Modal';
 import Profile from './components/pages/Profile';
 import Cart from './components/pages/Cart'
 import AuthService from './utils/auth'
@@ -9,29 +10,76 @@ import { QUERY_USER } from './utils/queries'
 import { useQuery, useMutation } from '@apollo/client';
 import { useCart } from './utils/CartContext';
 
+// default value
+export const ModalContext = createContext();
+
 function App() {
-  const {addToCart} = useCart();
+
+  const [showModal, setModal] = useState(false);
+  const [switchModal, flipSwitchModal] = useState(false);
+  // console.log(switchModal);
+  
+  const { addToCart } = useCart();
   const { loading, data } = useQuery(QUERY_USER);
+  
   return (
+    <Fragment>
     <>
       <header>
-        <div class="container">
+        <div className="container">
           <div id="branding">
             <h1>
-              <span class="highlight">Pet</span> Services
+              <span className="highlight">Pet</span> Services
             </h1>
           </div>
           <nav>
+
           {AuthService.loggedIn() ? (<div><li><Link to="/profile">Hello, {data.user.username}!</Link></li><li onClick = {() => {AuthService.logout()}}>Logout</li></div>) : (<div><li class="current"><a href="/login">Login</a></li><li class="current"><a href="/sign-up">Sign up</a></li></div>)}
               <li class="current">
                 <Link to="/">Home</Link>
+                
+              {AuthService.loggedIn() ? (
+                <div>
+                  <li>
+                    {loading ?
+                      <a href="/profile">
+                        Hello!
+                      </a> 
+                      :
+                      <a href="/profile">
+                        Hello, {data.user.username}!
+                      </a> 
+                    }
+                  </li>
+                  <li onClick = {() => {AuthService.logout()}}>
+                    Logout
+                  </li>
+                  </div>
+                  ) 
+                  : 
+                  (
+                    <div>
+                      <li className="current">
+                      <button 
+                        className =''
+                        onClick={() => setModal(true)}
+                      >
+                        Sign up/Log in
+                      </button>
+                      </li>
+                    </div>)}
+
+              <li className="current">
+                <a href="/">Home</a>
+
               </li>
-              <li class="current">
+              <li className="current">
                 <Link to ="/cart">Cart</Link>
                 <img
                   src="https://cdn.vectorstock.com/i/1000x1000/70/12/add-to-cart-icon-adding-shopping-cart-vector-28487012.webp"
-                width="20"
-                height="20"
+                  width="20"
+                  height="20"
+                  alt="Shopping cart"
               />
             </li>
           </nav>
@@ -39,18 +87,18 @@ function App() {
       </header>
       <div className="row">
         <section id="showcase">
-          <div class="container2">
+          <div className="container2">
             <h1>Find a Pet Service</h1>
             <Map />
           </div>
         </section>
 
         <section id="newsletter">
-          <div class="container3">
+          <div className="container3">
             <h1>Subscribe to our newsletter</h1>
             <form>
               <input type="email" placeholder="Enter Email..." />
-              <button type="submit" class="button_1">
+              <button type="submit" className="button_1">
                 Subscribe
               </button>
             </form>
@@ -59,14 +107,14 @@ function App() {
       </div>
 
       {/* our services  */}
-      <h2 class="h2title">Our Services Include</h2>
+      <h2 className="h2title">Our Services Include</h2>
       <section id="box">
-        {/* <!-- <h2 class="h2title">Our Services Include</h2> --> */}
-        <div class="container4">
-          <div class="box">
+        {/* <!-- <h2 className="h2title">Our Services Include</h2> --> */}
+        <div className="container4">
+          <div className="box">
             <h3>Dog Walking</h3>
             <img
-              class="servicebox"
+              className="servicebox"
               src="https://www.banfield.com/-/media/Project/Banfield/Main/en/Wellness_at_Banfield/Puppy_Hub/Puppy_Hub_6-7_months/0994_18_Banner_Animation_new.gif?rev=690d3ae4ca624d2f92f38ae5fd80ea7f"
               width="150"
               height="150"
@@ -81,13 +129,14 @@ function App() {
                 alert("Dog Walking Added to Cart");
               }}>Add to Cart</p></div>) : (null)}
           </div>
-          <div class="box">
+          <div className="box">
             <h3>Pet Sitting</h3>
             <img
-              class="servicebox"
+              className="servicebox"
               src="https://thumbs.dreamstime.com/b/cute-cartoon-cat-sitting-smiling-little-vector-illustration-sketch-152283646.jpg"
               width="150"
               height="150"
+              alt="Pet sitting representing a service"
               // For testing purposes only
               // onClick = { () => {
               //   addToCart("Pet Sitting - $15/hour")
@@ -102,10 +151,11 @@ function App() {
           <div class="box">
             <h3>Pet Grooming</h3>
             <img
-              class="servicebox"
+              className="servicebox"
               src="https://thumbs.dreamstime.com/b/dog-grooming-logo-design-template-pawprint-comb-scissors-vector-clipart-drawing-isolated-illustration-white-background-217266808.jpg"
               width="150"
               height="150"
+              alt="Pet grooming representing a service"
               // For testing purposes only
               // onClick = { () => {
               //   addToCart("Pet Grooming - $10/hour")
@@ -120,10 +170,11 @@ function App() {
           <div class="box">
             <h3>Animal Boarding</h3>
             <img
-              class="servicebox"
+              className="servicebox"
               src="https://www.universityplacevet.com/wp-content/uploads/sites/13/2018/10/logobig.png"
               width="150"
               height="150"
+              alt="Animal boarding representing a service"
               // For testing purposes only
               // onClick = { () => {
               //   addToCart("Animal Boarding - $20/night")
@@ -139,8 +190,8 @@ function App() {
       </section>
       {/* <!-- Mission statment --> */}
       <section id="mission">
-        <h4 class="h4title">Our Mission</h4>
-        <div class="container5">
+        <h4 className="h4title">Our Mission</h4>
+        <div className="container5">
           <p>
             Our mission is to provide the best pet services to our guests. We
             strive to satisfy your pet necessity. We are a team of dedicated pet
@@ -149,23 +200,27 @@ function App() {
           </p>
         </div>
       </section>
-      <div class="row">
-        <div class="column right"></div>
+      <div className="row">
+        <div className="column right"></div>
 
-        <div class="column left"></div>
+        <div className="column left"></div>
       </div>
       {/* <!-- footer --> */}
       <footer>
-        <div class="Contact">
+        <div className="Contact">
           <p>Contact Us</p>
-          <p class="address">Address: 345 Pet ave Chicago, USA 63445</p>
-          <p class="phone">Phone: 123-456-7890</p>
-          <p class="email">
+          <p className="address">Address: 345 Pet ave Chicago, USA 63445</p>
+          <p className="phone">Phone: 123-456-7890</p>
+          <p className="email">
             Email: <a href="mailto:INFO@PETRUS.ORG">INFO@PETSRUS.ORG</a>
           </p>
         </div>
       </footer>
+      <ModalContext.Provider value = {{showModal, setModal, switchModal, flipSwitchModal}}>
+        <Modal />
+      </ ModalContext.Provider>    
     </>
+    </Fragment>
   );
 }
 
