@@ -22,9 +22,9 @@ function App() {
             </h1>
           </div>
           <nav>
-          {AuthService.loggedIn() ? (<div><li><a href="/profile">Hello, {data.user.username}!</a></li><li onClick = {() => {AuthService.logout()}}>Logout</li></div>) : (<div><li class="current"><a href="/login">Login</a></li><li class="current"><a href="/sign-up">Sign up</a></li></div>)}
+          {AuthService.loggedIn() ? (<div><li><Link to="/profile">Hello, {data.user.username}!</Link></li><li onClick = {() => {AuthService.logout()}}>Logout</li></div>) : (<div><li class="current"><a href="/login">Login</a></li><li class="current"><a href="/sign-up">Sign up</a></li></div>)}
               <li class="current">
-                <a href="/">Home</a>
+                <Link to="/">Home</Link>
               </li>
               <li class="current">
                 <Link to ="/cart">Cart</Link>
