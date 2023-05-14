@@ -10,8 +10,8 @@ const Modal = ( ) => {
   return (
     <div>
         {!switchModal ?
-            <Signup /> :
-            <Login />
+            <Login /> : 
+            <Signup />
         }
     </div>
   );

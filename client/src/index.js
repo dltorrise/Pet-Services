@@ -42,14 +42,13 @@ return (
         <CartProvider>
         <Routes>
           <Route index element={<App />} />
-          <Route path= '/cart' element={ AuthService.loggedIn() ? <Cart /> : <Navigate to="/login"/> } />
+          {/* maybe replace log navigation with alert */}
+          <Route path= '/cart' element={ AuthService.loggedIn() ? <Cart /> : <Navigate to="/"/> } />
           {/* For testing purposes only
           <Route path= '/cart' element={<Cart />} /> */}
-          <Route path= '/profile' element={ AuthService.loggedIn() ? <Profile /> : <Navigate to="/login"/> } />
+          <Route path= '/profile' element={ AuthService.loggedIn() ? <Profile /> : <Navigate to="/"/> } />
           {/* For testing purposes only
           <Route path= '/profile' element={<Profile />} /> */}
-          <Route path= '/login' element={<Login />} />
-          <Route path= '/signup' element={<Signup />} />
         </Routes>
         </CartProvider>
       </ApolloProvider>
