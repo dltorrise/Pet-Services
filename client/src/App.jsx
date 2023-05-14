@@ -39,7 +39,7 @@ function App() {
 
                 {AuthService.loggedIn() ? (
                   <div id="homepage-intro">
-                    <li>
+                    <li className="current">
                       {loading ?
                         <a href="/profile">
                           Hello!
@@ -50,7 +50,8 @@ function App() {
                         </a>
                       }
                     </li>
-                    <li onClick={() => { AuthService.logout() }}>
+                    <br></br>
+                    <li className="current" onClick={() => { AuthService.logout() }}>
                       Logout
                     </li>
                   </div>
@@ -85,6 +86,7 @@ function App() {
             </nav>
           </div>
         </header>
+        <div id="body">
         <div className="row">
           <section id="showcase">
             <div className="container2">
@@ -204,6 +206,7 @@ function App() {
           <div className="column right"></div>
 
           <div className="column left"></div>
+        </div>
         </div>
         {/* <!-- footer --> */}
         <footer>
