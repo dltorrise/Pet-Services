@@ -57,7 +57,6 @@ export const ADD_PET = gql`
     $breed: String!
     $age: String!
     $type: String!
-    $owner: String!
     $image: String
   ) {
     addPet(
@@ -65,7 +64,6 @@ export const ADD_PET = gql`
       breed: $breed
       age: $age
       type: $type
-      owner: $owner
       image: $image
     ) {
       _id
@@ -77,3 +75,16 @@ export const ADD_PET = gql`
   }
 `;
 
+export const REMOVE_PET = gql`
+    mutation removePet($name: String!) {
+        removePet(name: $name) {
+            name
+            breed
+            description
+            age
+            type
+            owner
+            image
+        }
+    }
+`;

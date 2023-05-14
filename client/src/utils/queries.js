@@ -1,24 +1,20 @@
 import { gql } from '@apollo/client';
-// jwt-decode needs to be in package.json on client side
 
-// need to add query checkout - stripe ?
-
-// query products by category
-// question: do we need this?
-export const QUERY_PRODUCTS = gql`
-  query getProducts($category: ID) {
-    products(category: $category) {
-      _id
-      service
-      petTypes
-      image
-      price
-      category {
-        _id
-      }
-    }
-  }
-`;
+// query services by category
+// export const QUERY_PRODUCTS = gql`
+//   query getProducts($category: ID) {
+//     products(category: $category) {
+//       _id
+//       service
+//       petTypes
+//       image
+//       price
+//       category {
+//         _id
+//       }
+//     }
+//   }
+// `;
 
 // for Stripe?
 // export const QUERY_CHECKOUT = gql`
