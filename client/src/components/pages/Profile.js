@@ -67,12 +67,13 @@ const Profile = () => {
   // Otherwise, display the user's username and list of pets
   const { user } = data;
   return (
-    <div>
+    <div id="profile-page">
       <Link to="/" id="home-button-profile">	&lt;-- Back to Home</Link>
       <Link to="/cart" id="cart-button-profile">	Go to your Cart --&gt;</Link>
       <h1 id="title-profile">Welcome {user.username}!</h1>
-      <p>Here are your registered pets:</p>
       <div id="pets">
+      <p>Here are your registered pets:</p>
+      <div>
         <ul>
           {user.pets.map((pet) => (
             <li key={pet._id}>
@@ -84,6 +85,7 @@ const Profile = () => {
             </li>
           ))}
         </ul>
+      </div>
       </div>
       <div id="register">
         <form onSubmit={handleFormSubmit}>
@@ -104,11 +106,11 @@ const Profile = () => {
             <label htmlFor="age">Age:</label>
             <input type="number" name="age" onChange={handleInputChange} value={formState.age} required />
           </div>
-          <div>
+          {/* <div>
             <label htmlFor="image">Image URL:</label>
             <input type="text" name="image" onChange={handleInputChange} value={formState.image} />
-          </div>
-          <button type="submit">Register</button>
+          </div> */}
+          <button id="register-button" type="submit">Register</button>
         </form>
       </div>
     </div>
