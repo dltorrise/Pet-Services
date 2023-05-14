@@ -1,7 +1,4 @@
 import { gql } from '@apollo/client';
-// jwt-decode needs to be in package.json on client side
-
-// check if we need to update product 
 
 export const LOGIN = gql`
   mutation login($email: String!, $password: String!) {
@@ -38,11 +35,13 @@ export const ADD_USER = gql`
     $username: String!
     $email: String!
     $password: String!
+    $role: String!
   ) {
     addUser(
       username: $username
       email: $email
       password: $password
+      role: $role
     ) {
       token
       user {
@@ -56,9 +55,10 @@ export const ADD_PET = gql`
   mutation addPet(
     $name: String!
     $breed: String!
-    $age: Int!
+    $age: String!
     $type: String!
-    $owner: ID!
+    $owner: String!
+    $image: String
   ) {
     addPet(
       name: $name
@@ -66,10 +66,13 @@ export const ADD_PET = gql`
       age: $age
       type: $type
       owner: $owner
+      image: $image
     ) {
-      pet {
-        _id
-      }
+      _id
+      age
+      breed
+      image
+      name
     }
   }
 `;

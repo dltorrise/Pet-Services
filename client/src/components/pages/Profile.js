@@ -3,6 +3,8 @@ import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER } from '../../utils/queries'
 import AuthService from '../../utils/auth'
 import { ADD_PET } from '../../utils/mutations'
+import errorImage from '../../assets/404-bark.jpg'
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
   // Query user data from the server
@@ -46,18 +48,34 @@ const Profile = () => {
   // If the user is not logged in, display a message to prompt them to log in
   if (!loggedIn) {
     return (
-      <h2>You need to be logged in to view this page. Please log in.</h2>
+      <div className="error-message">
+        <h2>You need to be logged in to view this page. Please log in.</h2>
+        <img src={errorImage} alt="404 Error" />
+        <div className="button-container">
+          <a href="/" className="button">Home</a>
+          <a href="/login" className="button">Login</a>
+        </div>
+      </div>
     )
   }
+  
+  // If the user is logged in and the data is still loading, display a loading message
+  if (loading) {
+    return <h2>Loading...</h2>;
+  }
 
-  // If the user is logged in, display their username and list of pets
+  // Otherwise, display the user's username and list of pets
+  const { user } = data;
   return (
-    <div>
-      <h1>Welcome {data.user.username}!</h1>
-      <p>Here are your registered pets:</p>
+    <div id="profile-page">
+      <Link to="/" id="home-button-profile">	&lt;-- Back to Home</Link>
+      <Link to="/cart" id="cart-button-profile">	Go to your Cart --&gt;</Link>
+      <h1 id="title-profile">Welcome {user.username}!</h1>
       <div id="pets">
+      <p>Here are your registered pets:</p>
+      <div>
         <ul>
-          {data.user.pets.map((pet) => (
+          {user.pets.map((pet) => (
             <li key={pet._id}>
               <h3>{pet.name}</h3>
               <p>{pet.type}</p>
@@ -67,6 +85,7 @@ const Profile = () => {
             </li>
           ))}
         </ul>
+      </div>
       </div>
       <div id="register">
         <form onSubmit={handleFormSubmit}>
@@ -87,11 +106,11 @@ const Profile = () => {
             <label htmlFor="age">Age:</label>
             <input type="number" name="age" onChange={handleInputChange} value={formState.age} required />
           </div>
-          <div>
+          {/* <div>
             <label htmlFor="image">Image URL:</label>
             <input type="text" name="image" onChange={handleInputChange} value={formState.image} />
-          </div>
-          <button type="submit">Register</button>
+          </div> */}
+          <button id="register-button" type="submit">Register</button>
         </form>
       </div>
     </div>

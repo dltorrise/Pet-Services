@@ -4,7 +4,7 @@ import { FaMapMarkerAlt } from "react-icons/fa";
 
 const cities = [
   {
-    name: "Chicago", 
+    name: "Chicago",
     lat: 41.9341235,
     lng: -87.7783599,
     pins: [
@@ -18,7 +18,7 @@ const cities = [
     lng: -87.7404359,
     pins: [
       { lat: 42.045585, lng: -87.7404359 },
-      { lat: 42.2458651, lng:  -88.1538673},
+      { lat: 42.2458651, lng: -88.1538673 },
     ],
   },
   {
@@ -27,9 +27,27 @@ const cities = [
     lng: -87.8273143,
     pins: [
       { lat: 42.0331964, lng: -87.8273143 },
-      { lat: 42.1, lng: -86.7783599 },42.0331964,-87.8273143
+      { lat: 42.1, lng: -86.7783599 },
     ],
-  }
+  },
+  {
+    name: "Glendale",
+    lat: 41.9013443,
+    lng: -88.0637552,
+    pins: [
+      { lat: 41.9013443, lng: -88.0637552 },
+      { lat: 41.901382, lng: -88.133915 },
+    ],
+  },
+  {
+    name: "Arlington Heights",
+    lat: 32.7425,
+    lng: -97.3703,
+    // pins: [
+    //   // { lat: 46.423669, lng: 87.991257},
+    //   // { lat:46.096153 , lng: -87.991257},
+    // ],
+  },
 ];
 
 const MapPin = ({ text }) => (
@@ -47,7 +65,7 @@ export default function SimpleMap() {
       lat: city.lat,
       lng: city.lng,
     },
-    zoom: 8,
+    zoom: 7,
   };
 
   return (
@@ -61,16 +79,15 @@ export default function SimpleMap() {
         {cities.map((city, i) => (
           <option value={i}>{city.name}</option>
         ))}
-        {
-        /* 
+        {/* 
         <option value="0">Chicago</option>
         <option value="1">Evanston</option>
         */}
       </select>
 
-      <div className= "map" style={{ height: "40vh" }}>
+      <div ClassName="map" style={{ height: "40vh" }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyAa7Fs6zs5me7OX3Fx-K5cD9RYAxnHFw6Q" }}
+          bootstrapURLKeys={{ key: process.env.REACT_APP_GOOGLE_MAPS_API_KEY }}
           center={defaultProps.center}
           defaultZoom={defaultProps.zoom}
         >

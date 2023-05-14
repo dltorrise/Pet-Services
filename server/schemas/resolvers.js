@@ -9,7 +9,7 @@ const resolvers = {
     user: async (parent, args, context) => {
       if (context.user) {
         return User.findById(context.user._id).populate('pets');
-      }
+       }
       throw new AuthenticationError('You need to be logged in!');
     },
 
@@ -32,50 +32,55 @@ const resolvers = {
       return Product.findById(id).populate('service');
     },
 
-    order: async (parent, { id }, context) => {
-      if (!context.user) {
-        throw new AuthenticationError('You need to be logged in!');
-      }
-      const order = await Order.findById(id).populate('products.product');
-      if (!order) {
-        throw new Error('Order not found');
-      }
-      if (order.user.toString() !== context.user._id.toString()) {
-        throw new ForbiddenError('You are not authorized to access this order');
-      }
-      return order;
-    },
+    // order: async (parent, { _id }, context) => {
+    //   if (context.user) {
+    //     const user = await User.findById(context.user._id).populate({
+    //       path: 'orders.products',
+    //       populate: 'category'
+    //     });
 
-    checkout: async (parent, { products }, context) => {
-      if (!context.user) {
-        throw new AuthenticationError('You need to be logged in!');
-      }
-      const user = await User.findById(context.user._id);
-      if (!user) {
-        throw new Error('User not found');
-      }
-      const lineItems = products.map(product => ({
-        price_data: {
+    //     return user.orders.id(_id);
+    //   }
+
+    //   throw new AuthenticationError('Not logged in');
+    // },
+
+    checkout: async (parent, args, context) => {
+      const url = new URL(context.headers.referer).origin;
+      const order = new Order({ products: args.products });
+      const line_items = [];
+
+      const { products } = await order.populate('products');
+
+      for (let i = 0; i < products.length; i++) {
+        const product = await stripe.products.create({
+          name: products[i].name,
+          description: products[i].description,
+          images: [`${url}/images/${products[i].image}`]
+        });
+
+        const price = await stripe.prices.create({
+          product: product.id,
+          unit_amount: products[i].price * 100,
           currency: 'usd',
-          product_data: {
-            name: product.name,
-          },
-          unit_amount: product.price * 100,
-        },
-        quantity: 1,
-      }));
+        });
+
+        line_items.push({
+          price: price.id,
+          quantity: 1
+        });
+      }
+
       const session = await stripe.checkout.sessions.create({
         payment_method_types: ['card'],
-        line_items: lineItems,
+        line_items,
         mode: 'payment',
-        success_url: 'https://example.com/success',
-        cancel_url: 'https://example.com/cancel',
+        success_url: `${url}/success?session_id={CHECKOUT_SESSION_ID}`,
+        cancel_url: `${url}/`
       });
-      return {
-        sessionId: session.id,
-        publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
-      };
-    },
+
+      return { session: session.id };
+    }
   },
 
   Mutation: {
@@ -88,13 +93,17 @@ const resolvers = {
     },
 
     // mutation for adding an order
-    order: async (parent, { products }, context) => {
+    order: async (parent, { purchaseDate, products }, context) => {
       if (context.user) {
-        const orderProducts = products.map(product => ({
-          product: product._id,
-          quantity: product.quantity,
-        }));
-        const order = new Order({ products: orderProducts });
+        const orderProducts = await Promise.all(products.map(productId => Product.findById(productId)));
+    
+        const order = new Order({
+          purchaseDate: purchaseDate,
+          products: orderProducts.map(product => ({
+            product: product._id,
+            quantity: product.quantity,
+          }))
+        });
     
         await User.findByIdAndUpdate(context.user._id, { $push: { orders: order } });
     
@@ -132,7 +141,7 @@ const resolvers = {
     // mutation to add your pet
     addPet: async (parent, { name, breed, age, type, image }, context) => {
     if (context.user) {
-    const pet = await Pet.create({ name, breed, age, type, owner: context.user._id, image });
+    const pet = await Pet.create({ name, breed, age, type, image, owner: context.user._id });
 
     return pet;
   }

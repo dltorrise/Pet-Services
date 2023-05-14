@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useContext } from 'react';
 import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import AuthService from './utils/auth'
@@ -12,12 +12,11 @@ import { setContext } from '@apollo/client/link/context';
 
 import App from "./App";
 import Cart from "./components/pages/Cart";
-import Login from "./components/pages/Login"
-import Profile from "./components/pages/Profile"
-import Signup from "./components/pages/Signup"
+import Profile from "./components/pages/Profile";
+import CartProvider from './utils/CartContext';
 
 const httpLink = createHttpLink({
-  uri: '/graphql',
+  uri: '/graphql'
 });
 
 const authLink = setContext((_, { headers }) => {
@@ -37,15 +36,21 @@ const client = new ApolloClient({
 
 export default function Index() {
 return (
+  
 <BrowserRouter>
       <ApolloProvider client={client}>
+        <CartProvider>
         <Routes>
           <Route index element={<App />} />
-          <Route path= 'cart' element={ AuthService.loggedIn() ? <Cart /> : <Navigate to="/login"/> } />
-          <Route path= 'profile' element={ AuthService.loggedIn() ? <Profile /> : <Navigate to="/login"/> } />
-          <Route path= 'login' element={<Login />} />
-          <Route path= 'signup' element={<Signup />} />
+          {/* maybe replace log navigation with alert */}
+          <Route path= '/cart' element={ AuthService.loggedIn() ? <Cart /> : <Navigate to="/"/> } />
+          {/* For testing purposes only
+          <Route path= '/cart' element={<Cart />} /> */}
+          <Route path= '/profile' element={ AuthService.loggedIn() ? <Profile /> : <Navigate to="/"/> } />
+          {/* For testing purposes only
+          <Route path= '/profile' element={<Profile />} /> */}
         </Routes>
+        </CartProvider>
       </ApolloProvider>
     </BrowserRouter>
 );
