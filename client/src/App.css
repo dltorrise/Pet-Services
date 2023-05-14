@@ -349,7 +349,8 @@ img {
   align-self: center;
 }
 
-#register-button {
+#register-button,
+#remove-button {
   outline: 2px solid black;
   margin-top: 10px;
 }
