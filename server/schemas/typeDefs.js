@@ -16,7 +16,7 @@ const typeDefs = gql`
     description: String
     age: String!
     type: String!
-    owner: String!
+    owner: String
     image: String
   }
 
@@ -52,7 +52,7 @@ const typeDefs = gql`
   type Mutation {
     login(email: String!, password: String!): Auth
     addUser(username: String!, email: String!, password: String!, role: String!): Auth
-    addPet(name: String!, breed: String!, age: String!, type: String!, owner: String!, image: String): Pet
+    addPet(name: String!, breed: String!, age: String!, type: String!, image: String): Pet
     order(purchaseDate: String!, products: [ID]!): Order
     updateProduct(_id: ID!, quantity: Int!): Product
   }
