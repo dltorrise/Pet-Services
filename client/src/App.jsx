@@ -37,6 +37,7 @@ function App() {
           {AuthService.loggedIn() ? (<div><li><Link to="/profile">Hello, {data.user.username}!</Link></li><li onClick = {() => {AuthService.logout()}}>Logout</li></div>) : (<div><li class="current"><a href="/login">Login</a></li><li class="current"><a href="/sign-up">Sign up</a></li></div>)}
               <li class="current">
                 <Link to="/">Home</Link>
+              </li>
                 
               {AuthService.loggedIn() ? (
                 <div>
