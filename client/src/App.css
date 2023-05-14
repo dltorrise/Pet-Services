@@ -17,8 +17,8 @@
   justify-content: space-between;
   padding: 0.5%;
   margin: 0;
-  width: 100%;
-  height: 100%;
+  width: 80%;
+  height: 400px;
   overflow: hidden;
 }
 
@@ -32,10 +32,10 @@ body {
   display: inline-block;
   justify-content: space-between;
   padding-left: 3%;
+  padding: 40px;
 }
 .servicebox {
   border-radius: 20%;
-  cursor: pointer;
 }
 .h2title {
   font-weight: bolder;
@@ -56,6 +56,7 @@ body {
   width: 400px;
   padding: 10px;
   margin: 30px;
+  margin-right: 200px;
   
 }
 
@@ -130,6 +131,7 @@ svg {
   border-radius: 1%;
   font-weight: bolder;
   font-size: 1.0em;
+  width: 30%;
 }
 .current1 {
   /* cart needs to be to the right */
@@ -145,6 +147,7 @@ svg {
 @media only screen 
 and (min-device-width : 320px) 
 and (max-device-width : 480px) {
+
 .map {
   width: 90vw;
 }
@@ -152,19 +155,41 @@ body {
   width: 100%;
   overflow: auto;
 }
+
+h1 {
+  font-size: x-large;
+}
 .row {
-  display: block;
+  width: 100vw;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 #mission{
   width: 70vw;
-  padding-right: 0%;
+  align-self: center;
+  margin-left: 190px;
+}
+
+img {
+  width: 80%;
+}
+.box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.container {
+  width: 80%;
 }
 #newsletter {
   width: 50vw;
   padding-right: 0%;
 }
 #showcase {
-  width: 50vw;
+  width: 80vw;
   padding-left: 0%;
 }
 .current {
@@ -241,9 +266,9 @@ body {
   transition: all 0.2s ease-in-out; 
 }
 
-.button:hover {
+/* .button:hover {
   transform: scale(0.95);
-}
+} */
 
 
 /* cart css */
@@ -282,15 +307,100 @@ body {
 #home-button-cart {
   margin-top: 20px;
   text-align: center;
+  margin-right: 20px;
+}
+
+#profile-button-cart {
+  margin-top: 10px;
+  margin-left: 25px;
+  text-align: center;
 }
 
 /* profile page */
+
+#profile-page {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
 
 #home-button-profile {
   margin-top: 20px;
   text-align: center;
 }
 
+#cart-button-profile {
+  text-align: center;
+}
+
 #title-profile {
   margin-top: 20px;
+  text-align: center;
+  font-size: large;
+}
+
+#pets {
+  margin-top: 10px;
+  align-self: center;
+}
+
+#register {
+  margin-top: 20px;
+  align-self: center;
+}
+
+#register-button {
+  outline: 2px solid black;
+  margin-top: 10px;
+}
+
+/* home */
+.highlight {
+  text-align: center;
+}
+nav {
+  align-items: center;
+}
+#homepage-intro {
+  align-self: center;
+  transform: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+#body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#mission {
+  align-self: center;
+  text-align: center;
+}
+
+footer {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container4 {
+  width: 100%;
+}
+
+.service {
+  cursor: pointer;
+  color: blue;
+}
+
+h3 {
+  font-size: larger;
 }
