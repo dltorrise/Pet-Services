@@ -75,3 +75,16 @@ export const ADD_PET = gql`
   }
 `;
 
+export const REMOVE_PET = gql`
+    mutation removePet($name: String!) {
+        removePet(name: $name) {
+            name
+            breed
+            description
+            age
+            type
+            owner
+            image
+        }
+    }
+`;

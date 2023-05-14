@@ -2,13 +2,15 @@ import React, { useState } from 'react';
 import { useQuery, useMutation } from '@apollo/client';
 import { QUERY_USER } from '../../utils/queries'
 import AuthService from '../../utils/auth'
-import { ADD_PET } from '../../utils/mutations'
+import { ADD_PET, REMOVE_PET } from '../../utils/mutations'
 import errorImage from '../../assets/404-bark.jpg'
 import { Link } from 'react-router-dom';
 
 const Profile = () => {
   // Query user data from the server
   const { loading, data } = useQuery(QUERY_USER);
+
+   const [ removePet ] = useMutation(REMOVE_PET);
 
   // Create a mutation function to add a new pet
   const [addPet] = useMutation(ADD_PET);
@@ -39,6 +41,19 @@ const Profile = () => {
       setFormState({ name: '', type: '', breed: '', age: '', image: '' });
     } catch (e) {
       console.error(e);
+    }
+  };
+
+  // function accepts pet's name and deletes pet from database
+  const handleRemovePet = async (name) => {
+    try {
+      const { data } = await removePet({
+        variables: { name },
+        refetchQueries: [{ query: QUERY_USER }],
+      });
+
+    } catch (err) {
+      console.error(err);
     }
   };
 
@@ -82,6 +97,9 @@ const Profile = () => {
               <p>Breed: {pet.breed.toUpperCase()}</p>
               <p>Age: {pet.age}</p>
               {/* <img src={pet.image} alt={pet.name} /> */}
+              <button type='submit' id="remove-button" onClick={() => handleRemovePet(pet.name)}>
+                    Remove
+              </button>
             </li>
           ))}
         </ul>
@@ -92,15 +110,15 @@ const Profile = () => {
           <h3>Register a new pet!</h3>
           <div>
             <label htmlFor="name">Name:</label>
-            <input type="text" name="name" onChange={handleInputChange} value={formState.name} required />
+            <input type="text" name="name" onChange={handleInputChange} value={formState.name} placeholder="Your pet's name" required />
           </div>
           <div>
             <label htmlFor="type">Type:</label>
-            <input type="text" name="type" onChange={handleInputChange} value={formState.type} required />
+            <input type="text" name="type" onChange={handleInputChange} value={formState.type} placeholder="Cat" required />
           </div>
           <div>
             <label htmlFor="breed">Breed:</label>
-            <input type="text" name="breed" onChange={handleInputChange} value={formState.breed} required />
+            <input type="text" name="breed" onChange={handleInputChange} value={formState.breed} placeholder="Siamese" required />
           </div>
           <div>
             <label htmlFor="age">Age:</label>

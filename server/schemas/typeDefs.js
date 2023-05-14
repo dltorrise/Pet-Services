@@ -55,6 +55,7 @@ const typeDefs = gql`
     addPet(name: String!, breed: String!, age: String!, type: String!, image: String): Pet
     order(purchaseDate: String!, products: [ID]!): Order
     updateProduct(_id: ID!, quantity: Int!): Product
+    removePet(name: String!): Pet
   }
 `;
 

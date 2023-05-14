@@ -19,7 +19,6 @@ const petSchema = new Schema(
 
       type: {
         type: String,
-        enum: ['dog', 'cat', 'bird', 'guinea pig', 'exotic'],
         required: true,
       },
 
