@@ -9,7 +9,7 @@ const resolvers = {
     user: async (parent, args, context) => {
       if (context.user) {
         return User.findById(context.user._id).populate('pets');
-      }
+       }
       throw new AuthenticationError('You need to be logged in!');
     },
 
@@ -141,7 +141,7 @@ const resolvers = {
     // mutation to add your pet
     addPet: async (parent, { name, breed, age, type, image }, context) => {
     if (context.user) {
-    const pet = await Pet.create({ name, breed, age, type, owner: context.user._id, image });
+    const pet = await Pet.create({ name, breed, age, type, image, owner: context.user._id });
 
     return pet;
   }
