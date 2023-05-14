@@ -38,7 +38,7 @@ function App() {
               <ul class="current">
 
                 {AuthService.loggedIn() ? (
-                  <div>
+                  <div id="homepage-intro">
                     <li>
                       {loading ?
                         <a href="/profile">

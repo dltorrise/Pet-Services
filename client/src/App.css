@@ -282,15 +282,58 @@ body {
 #home-button-cart {
   margin-top: 20px;
   text-align: center;
+  margin-right: 20px;
+}
+
+#profile-button-cart {
+  margin-top: 10px;
+  margin-left: 25px;
+  text-align: center;
 }
 
 /* profile page */
+
+#profile-page {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
 
 #home-button-profile {
   margin-top: 20px;
   text-align: center;
 }
 
+#cart-button-profile {
+  text-align: center;
+}
+
 #title-profile {
   margin-top: 20px;
+  text-align: center;
+  font-size: large;
+}
+
+#pets {
+  margin-top: 10px;
+  align-self: center;
+}
+
+#register {
+  margin-top: 20px;
+  align-self: center;
+}
+
+#register-button {
+  outline: 2px solid black;
+  margin-top: 10px;
+}
+
+/* home */
+
+nav {
+  align-self: center;
+}
+#homepage-intro {
+  align-self: center;
 }
