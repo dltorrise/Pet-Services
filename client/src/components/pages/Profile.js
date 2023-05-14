@@ -77,11 +77,11 @@ const Profile = () => {
         <ul>
           {user.pets.map((pet) => (
             <li key={pet._id}>
-              <h3>{pet.name}</h3>
-              <p>{pet.type}</p>
-              <p>{pet.breed}</p>
-              <p>{pet.age}</p>
-              <img src={pet.image} alt={pet.name} />
+              <h3>Name: {pet.name.toUpperCase()}</h3>
+              <p>Type: {pet.type.toUpperCase()}</p>
+              <p>Breed: {pet.breed.toUpperCase()}</p>
+              <p>Age: {pet.age}</p>
+              {/* <img src={pet.image} alt={pet.name} /> */}
             </li>
           ))}
         </ul>
