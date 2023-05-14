@@ -141,14 +141,34 @@ const resolvers = {
     // mutation to add your pet
     addPet: async (parent, { name, breed, age, type, image }, context) => {
     if (context.user) {
-    const pet = await Pet.create({ name, breed, age, type, image, owner: context.user._id });
+    const pet = await Pet.create({ name, breed, age, type, image, owner: context.user.username });
+
+    await User.findOneAndUpdate(
+      { _id: context.user._id },
+      { $push: { pets: pet._id } }
+    );
 
     return pet;
   }
 
   throw new AuthenticationError('You need to be logged in!');
-},
+  },
 
+  removePet: async (parent, { name }, context) => {
+    if (context.user) {
+      const pet = await Pet.findOneAndDelete({
+        name: name
+      });
+
+      await User.findOneAndUpdate(
+        { _id: context.user._id },
+        { $pull: { pets: pet._id } }
+      );
+
+      return pet;
+    }
+    throw new AuthenticationError('You need to be logged in!');
+  },
   },
 };
 
