@@ -4,6 +4,7 @@ import { QUERY_USER } from '../../utils/queries'
 import AuthService from '../../utils/auth'
 import { ADD_PET } from '../../utils/mutations'
 import errorImage from '../../assets/404-bark.jpg'
+import { Link } from 'react-router-dom';
 
 const Profile = () => {
   // Query user data from the server
@@ -67,7 +68,9 @@ const Profile = () => {
   const { user } = data;
   return (
     <div>
-      <h1>Welcome {user.username}!</h1>
+      <Link to="/" id="home-button-profile">	&lt;-- Back to Home</Link>
+      <Link to="/cart" id="cart-button-profile">	Go to your Cart --&gt;</Link>
+      <h1 id="title-profile">Welcome {user.username}!</h1>
       <p>Here are your registered pets:</p>
       <div id="pets">
         <ul>
