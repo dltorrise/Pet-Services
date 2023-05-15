@@ -1,19 +1,38 @@
 import "./App.css";
 import React, { useState, Fragment, createContext } from "react";
 import Map from "./components/Map";
-import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import Modal from "./components/pages/Modal";
-import Profile from "./components/pages/Profile";
-import Cart from "./components/pages/Cart";
-import AuthService from "./utils/auth";
-import { QUERY_USER } from "./utils/queries";
-import { useQuery, useMutation } from "@apollo/client";
-import { useCart } from "./utils/CartContext";
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import Modal from './components/pages/Modal';
+import Profile from './components/pages/Profile';
+import Cart from './components/pages/Cart'
+import AuthService from './utils/auth'
+import { QUERY_USER } from './utils/queries'
+import { useQuery, useMutation } from '@apollo/client';
+import { useCart } from './utils/CartContext';
+import {send} from '@emailjs/browser'
 
 // default value
 export const ModalContext = createContext();
 
 function App() {
+
+  // const sendEmail = () => {
+
+//     const params = {
+//         email: email,
+//     }
+
+//     send('service_414popx', 'final_project', params, 'rb21Jy6x0x9Mx3EFU')
+//     .then(function() {
+//         console.log('SUCCESS!');
+//         window.location.reload()
+//     }, function(error) {
+//         console.log('FAILED...', error);
+//     });
+
+   
+// }
+
   const [showModal, setModal] = useState(false);
   const [switchModal, flipSwitchModal] = useState(false);
   // console.log(switchModal);
@@ -82,18 +101,18 @@ function App() {
               </div>
             </section>
 
-            <section id="newsletter">
-              <div className="container3">
-                <h1>Subscribe to our newsletter</h1>
-                <form>
-                  <input type="email" placeholder="Enter Email..." />
-                  <button type="submit" className="button_1">
-                    Subscribe
-                  </button>
-                </form>
-              </div>
-            </section>
-          </div>
+          <section id="newsletter">
+            <div className="container3">
+              <h1>Subscribe to our newsletter</h1>
+              <form>
+                <input type="email" placeholder="Enter Email..." />
+                <button type="submit" className="button_1">
+                  Subscribe
+                </button>
+              </form>
+            </div>
+          </section>
+        </div>
 
           {/* our services  */}
           <h2 className="h2title">Our Services Include</h2>

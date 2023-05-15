@@ -84,7 +84,7 @@ const Profile = () => {
   return (
     <div id="profile-page">
       <Link to="/" id="home-button-profile">	&lt;-- Back to Home</Link>
-      <Link to="/cart" id="cart-button-profile">	Go to your Cart --&gt;</Link>
+      {/* <Link to="/cart" id="cart-button-profile">	Go to your Cart --&gt;</Link> */}
       <h1 id="title-profile">Welcome {user.username}!</h1>
       <div id="pets">
       <p class="cuddly-friends">Here are your cuddly friends!🐶:</p>
