@@ -40,12 +40,20 @@ body {
 .h2title {
   font-weight: bolder;
   text-align: center;
-  font-size: 1.5em;
+  font-size: 2.0em;
   font-weight: 600;
+  box-sizing:content-box;
+  padding: 0.5%;
+  margin: 0;
+  text-transform: uppercase;  
+  background-color: whitesmoke;
+  border-radius: 1%;
   margin-top: 1.8em;
   margin-bottom: 0.5em;
   text-transform: uppercase;
   padding-top: 1%;
+  box-shadow: inset 0 0 1.0em #e8c60b;
+  border-radius: 10%;
 }
 #mission {
   font-weight: bolder;
@@ -61,7 +69,7 @@ body {
 }
 
 svg {
-  color: red;
+  color: yellow;
 
 }
 #branding {
@@ -77,6 +85,7 @@ svg {
   transform: scale(1.1);
   transition: 0.5s;
 }
+
 .current {
   margin: 0;
   padding: 0;
@@ -143,13 +152,15 @@ svg {
 }
 .map {
   width: 300px;
+  opacity: 0.2;
 }
+
 @media only screen 
 and (min-device-width : 320px) 
 and (max-device-width : 480px) {
 
 .map {
-  width: 90vw;
+  width: 80%;
 }
 body {
   width: 100%;
