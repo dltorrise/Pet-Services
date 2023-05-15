@@ -240,8 +240,10 @@ img {
   font-size: 2rem;
 }
 
-#pets {
-  margin-bottom: 2rem;
+.cuddly-friends {
+  text-align: center;
+  font-weight: bold;
+  font-size: 24px;
 }
 
 #pets ul {
@@ -313,6 +315,21 @@ img {
 
 #register-button:hover {
   transform: scale(1.05);
+}
+
+#remove-button {
+  background-color: #0077FF;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+#remove-button:hover {
+  background-color: #FF0000;
 }
 
 /* Mobile styles for Profile */
@@ -443,24 +460,94 @@ img {
   text-align: center;
 }
 /* home */
-.highlight {
-  text-align: center;
-}
-nav {
-  align-items: center;
-}
-#homepage-intro {
-  align-self: center;
-  transform: none;
+
+header {
+  height: 100px;
+  top: 0;
+  width: 100%;
+  z-index: 999;
 }
 
 .container {
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding: 0 20px;
+}
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.navbar-left {
+  display: flex;
   align-items: center;
 }
 
+.navbar-left h1 {
+  margin: 0;
+}
 
+.highlight {
+  font-size: 36px;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  color: #007bff;
+  font-weight: bold;
+}
+
+.navbar-right ul {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar-right li {
+  margin-left: 20px;
+}
+
+.navbar-right a,
+.navbar-right button {
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 22px 27px;
+  transition: all 0.3s ease;
+}
+
+.navbar-right a:hover,
+.navbar-right button:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  transform: scale(1.1);
+  color: #ff6600;
+}
+
+.homepage-intro span {
+  color: black;
+  font-weight: bold;
+  font-size: 18px;
+  padding: 15px;
+  transition: all 0.3s ease;
+}
+
+.homepage-intro span:hover {
+  cursor: pointer;
+  text-decoration: underline;
+  transform: scale(1.1);
+  color: #ff6600;
+}
+
+body {
+  padding-top: 100px;
+}
 
 #body {
   display: flex;
@@ -468,6 +555,43 @@ nav {
   align-items: center;
 }
 
+/* mobile home page */
+
+@media only screen and (max-width: 600px) {
+  .container {
+  flex-direction: column;
+}
+  
+  .navbar-left {
+  margin-bottom: 20px;
+}
+  
+  .highlight {
+  font-size: 24px;
+}
+  
+  .navbar-right ul {
+  flex-direction: column;
+  align-items: flex-end;
+}
+  
+  .navbar-right li {
+  margin-left: 0;
+  margin-bottom: 10px;
+}
+  
+  .navbar-right a,
+  .navbar-right button {
+  font-size: 16px;
+  padding: 10px 15px;
+}
+  
+  .homepage-intro span {
+  font-size: 16px;
+  padding: 10px;
+}
+}
+  
 #mission {
   align-self: center;
   text-align: center;
