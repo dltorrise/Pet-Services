@@ -51,7 +51,7 @@ function Login ( ) {
         onClick={handleClose}
       >
         <div className="md:w-[600px] w-[90%] mx-auto flex flex-col">
-          <div className='bg-white p-12 rounded flex flex-col'>
+          <div className='bg-white p-12 rounded flex flex-col '>
           <button 
             className="text-gray-900 place-self-end"
             onClick={()=> onClose()}

@@ -34,8 +34,7 @@ function Signup ( ) {
   
     const handleChange = (event) => {
       const { name, value } = event.target;
-      console.log(name);
-      console.log(value);
+ 
       setFormState({
         ...formState,
         [name]: value,
@@ -54,7 +53,7 @@ function Signup ( ) {
           id="wrapper"
           onClick={handleClose}
         >
-          <div className="md:w-[600px] w-[90%] mx-auto flex flex-col">
+          <div className="md:w-[600px] w-[90%] mx-auto flex flex-col ">
 
         <div className=' bg-white p-12 rounded flex flex-col' >
         <button 

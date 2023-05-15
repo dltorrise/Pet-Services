@@ -107,6 +107,7 @@ function App() {
                   src="https://media.istockphoto.com/id/1303755155/vector/girl-walking-her-dog-silhouette.jpg?s=612x612&w=0&k=20&c=2vRYlAlmNccKkjucyi_NmSHxuNqDHrGz2oRSZ8qvDBU="
                   width="150"
                   height="150"
+                  alt="Dog walking on a leash representing a service"
                   // For testing purposes only
                   // onClick = { () => {
                   //   addToCart("Dog Walking - $10/hour")
