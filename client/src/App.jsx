@@ -16,22 +16,22 @@ export const ModalContext = createContext();
 
 function App() {
 
-  const sendEmail = () => {
+  // const sendEmail = () => {
 
-    const params = {
-        email: email,
-    }
+//     const params = {
+//         email: email,
+//     }
 
-    send('service_414popx', 'final_project', params, 'rb21Jy6x0x9Mx3EFU')
-    .then(function() {
-        console.log('SUCCESS!');
-        window.location.reload()
-    }, function(error) {
-        console.log('FAILED...', error);
-    });
+//     send('service_414popx', 'final_project', params, 'rb21Jy6x0x9Mx3EFU')
+//     .then(function() {
+//         console.log('SUCCESS!');
+//         window.location.reload()
+//     }, function(error) {
+//         console.log('FAILED...', error);
+//     });
 
    
-}
+// }
 
   const [showModal, setModal] = useState(false);
   const [switchModal, flipSwitchModal] = useState(false);
