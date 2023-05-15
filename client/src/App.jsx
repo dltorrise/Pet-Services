@@ -9,11 +9,29 @@ import AuthService from './utils/auth'
 import { QUERY_USER } from './utils/queries'
 import { useQuery, useMutation } from '@apollo/client';
 import { useCart } from './utils/CartContext';
+import {send} from '@emailjs/browser'
 
 // default value
 export const ModalContext = createContext();
 
 function App() {
+
+  const sendEmail = () => {
+
+    const params = {
+        email: email,
+    }
+
+    send('service_414popx', 'final_project', params, 'rb21Jy6x0x9Mx3EFU')
+    .then(function() {
+        console.log('SUCCESS!');
+        window.location.reload()
+    }, function(error) {
+        console.log('FAILED...', error);
+    });
+
+   
+}
 
   const [showModal, setModal] = useState(false);
   const [switchModal, flipSwitchModal] = useState(false);
@@ -99,8 +117,8 @@ function App() {
             <div className="container3">
               <h1>Subscribe to our newsletter</h1>
               <form>
-                <input type="email" placeholder="Enter Email..." />
-                <button type="submit" className="button_1">
+                <input value={email} type="email" placeholder="Enter Email..." />
+                <button onClick={sendEmail} type="submit" className="button_1">
                   Subscribe
                 </button>
               </form>

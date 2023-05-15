@@ -148,12 +148,20 @@ svg {
 and (min-device-width : 320px) 
 and (max-device-width : 480px) {
 
+
 .map {
   width: 90vw;
 }
 body {
   width: 100%;
   overflow: auto;
+  height: 100vh;
+}
+
+#cart-nav-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 h1 {
@@ -208,7 +216,7 @@ img {
   margin: 2rem;
 }
 
-#home-button-profile, #cart-button-profile {
+#home-button-profile, #cart-button-profile, #home-button-cart, #profile-button-cart {
   position: absolute;
   top: 1rem;
   font-size: 1rem;
@@ -221,16 +229,16 @@ img {
   transition: all 0.2s ease-in-out;
 }
 
-#home-button-profile:hover, #cart-button-profile:hover {
+#home-button-profile:hover, #cart-button-profile:hover, #home-button-cart:hover, #profile-button-cart:hover {
   font-size: 1.1rem;
   transform: scale(1.05);
 }
 
-#home-button-profile {
+#home-button-profile, #home-button-cart {
   left: 1rem;
 }
 
-#cart-button-profile {
+#cart-button-profile, #profile-button-cart {
   right: 1rem;
 }
 
@@ -299,7 +307,7 @@ img {
   margin-top: 0.5rem;
 }
 
-#register-button {
+#register-button, #purchase-button, #empty-cart-button {
   margin-top: 1rem;
   background-color: #0077FF;
   color: white;
@@ -309,6 +317,13 @@ img {
   font-size: 1rem;
   cursor: pointer;
   transition: transform 0.2s ease-in-out;
+}
+
+#cart-buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
 }
 
 #register-button:hover {
@@ -401,23 +416,25 @@ img {
 /* cart css */
 
 #cart-container {
-  margin-top: 50px;
+  margin-top: 100px;
   display: flex;
   flex-direction: column;
 }
 
 #cart-title {
   text-align: center;
+  font-size: xx-large;
 }
 
 #item-container {
   align-self: center;
+  margin-top: 20px;
 }
 
 .cart-item {
   outline: 2px solid gold;
   width: 200px;
-  height: 60px;
+  height: auto;
   text-align: center;
   padding: 10px;
 }
