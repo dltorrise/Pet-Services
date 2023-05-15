@@ -87,7 +87,7 @@ const Profile = () => {
       {/* <Link to="/cart" id="cart-button-profile">	Go to your Cart --&gt;</Link> */}
       <h1 id="title-profile">Welcome {user.username}!</h1>
       <div id="pets">
-      <p>Here are your cuddly friends!:</p>
+      <p class="cuddly-friends">Here are your cuddly friends!🐶:</p>
       <div>
         <ul>
           {user.pets.map((pet) => (
