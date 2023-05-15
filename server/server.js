@@ -3,8 +3,7 @@ const { ApolloServer } = require('apollo-server-express');
 const path = require('path');
 const { authMiddleware } = require('./utils/auth');
 
-// server to configure environment variables - need to research where it will go with GraphQl/Apollo 
-// require("dotenv").config();
+require("dotenv").config();
 
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
@@ -27,7 +26,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // catch all for all server-side get routes to route to index file in build directory
-app.get('/', (req, res) => {
+app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, '../client/build/index.html'));
 });
 
