@@ -57,7 +57,7 @@ function App() {
             <a href="/">Home</a>
           </li>
           <li>
-            <a href="/cart">Cart</a>
+            <Link to="/cart">Cart</Link>
           </li>
           {AuthService.loggedIn() ? (
             <li>
