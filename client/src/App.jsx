@@ -24,63 +24,55 @@ function App() {
   return (
     <Fragment>
       <>
-        <header>
-          <div className="container">
-            <div id="branding">
-              <h1>
-                <span textalign="center" className="highlight">
-                  Pet
-                </span>{" "}
-                Services
-              </h1>
-            </div>
-            <nav>
-              <ul class="current">
-                {AuthService.loggedIn() ? (
-                  <div id="homepage-intro">
-                    <li className="current">
-                      {loading ? (
-                        <a href="/profile">Hello!</a>
-                      ) : (
-                        <a href="/profile">Hello, {data.user.username}!</a>
-                      )}
-                    </li>
-                    <br></br>
-                    <li
-                      className="current"
-                      onClick={() => {
-                        AuthService.logout();
-                      }}
-                    >
-                      Logout
-                    </li>
-                  </div>
-                ) : (
-                  <div>
-                    <li className="current">
-                      <button className="" onClick={() => setModal(true)}>
-                        Sign up/Log in
-                      </button>
-                    </li>
-                  </div>
-                )}
+      <header>
+  <div class="container">
+    <nav class="navbar">
+      <div class="navbar-left">
+        <h1>
+          <span class="highlight">Pet Services</span>
+        </h1>
+      </div>
+      <div class="navbar-right">
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/cart">Cart</a>
+          </li>
+          {AuthService.loggedIn() ? (
+            <li>
+              <div class="homepage-intro">
+                <span>
+                  {loading ? (
+                    <a href="/profile">
+                      Hello!
+                    </a>
+                  ) : (
+                    <a href="/profile">
+                      Hello, {data.user.username}!
+                    </a>
+                  )}
+                </span>
+                <span onClick={() => { AuthService.logout() }}>
+                  Logout
+                </span>
+              </div>
+            </li>
+          ) : null}
+          {!AuthService.loggedIn() && (
+            <li>
+              <button class="" onClick={() => setModal(true)}>
+                Sign up/Log in
+              </button>
+            </li>
+          )}
+        </ul>
+      </div>
+    </nav>
+  </div>
+</header>
 
-                <li className="current">
-                  <a href="/">Home</a>
-                </li>
-                <li className="current">
-                  <Link to="/cart">Cart</Link>
-                  {/* <img
-                    src="https://cdn.vectorstock.com/i/1000x1000/70/12/add-to-cart-icon-adding-shopping-cart-vector-28487012.webp"
-                    width="20"
-                    height="20"
-                    alt="Shopping cart"
-                  /> */}
-                </li>
-              </ul>
-            </nav>
-          </div>
-        </header>
         <div id="body">
           <div className="row">
             <section id="showcase">
