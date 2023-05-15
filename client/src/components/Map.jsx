@@ -38,16 +38,7 @@ const cities = [
       { lat: 41.9013443, lng: -88.0637552 },
       { lat: 41.901382, lng: -88.133915 },
     ],
-  },
-  {
-    name: "Arlington Heights",
-    lat: 32.7425,
-    lng: -97.3703,
-    // pins: [
-    //   // { lat: 46.423669, lng: 87.991257},
-    //   // { lat:46.096153 , lng: -87.991257},
-    // ],
-  },
+  }
 ];
 
 const MapPin = ({ text }) => (
@@ -79,7 +70,7 @@ export default function SimpleMap() {
         {cities.map((city, i) => (
           <option value={i}>{city.name}</option>
         ))}
-        {/* 
+        {/*
         <option value="0">Chicago</option>
         <option value="1">Evanston</option>
         */}
