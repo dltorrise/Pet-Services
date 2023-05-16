@@ -33,7 +33,7 @@ Pet Services link: https://pet-services.herokuapp.com/
 
 ## Screenshot
 
-![](../Pet-Services/client/src/assets/pet-services-screenshot.png)
+![](./client/src/assets/pet-services-screenshot.png)
 
 ## Installation
 
