@@ -5,13 +5,15 @@
 - [Title](#title)
 - [Description](#description)
 - [User Story](#user-story)
-- [Wireframe](#wireframe)
+- [Deployed](#depolyed)
+- [Screenshot](#screenshot)
 - [Installation](#installation)
 - [Usage](#usage)
 - [License](#license)
 - [Contributing](#contributing)
 - [Tests](#tests)
 - [Questions](#questions)
+- [Credits](#credits)
 
 ## Description
 
@@ -25,9 +27,13 @@ AND look at reviews of employees who carry out these services
 AND see a featured pet friend for my own viewing enjoyment
 AND purchase these services on the website with a secure technology
 
-## Wireframe
+## Deployed
 
-![Screenshot of wireframe for pet services store, including services like guinea pig grooming and featured pets and employees](./assets/images/pet-services-wireframe.png)
+Pet Services link: https://pet-services.herokuapp.com/
+
+## Screenshot
+
+![](../Pet-Services/client/src/assets/pet-services-screenshot.jpg)
 
 ## Installation
 
@@ -49,10 +55,10 @@ N/A
 
 ## Contributing
 
-Danielle Torrisè
-Muna Zeki
-Ryan Petty
-Veronika Pomyateeva
+- [Danielle Torrisè](https://github.com/dltorrise)
+- [Muna Zeki](https://github.com/MunaZekia)
+- [Ryan Petty](https://github.com/Ryebread5555)
+- [Veronika Pomyateeva](https://github.com/veronika-pomy)
 
 ## Tests
 
@@ -62,9 +68,30 @@ N/A
 
 Any questions? Contact us at:
 
+- dltorrise@gmail.com
+- munazekia@gmail.com
+- rypetty55@gmail.com
+- pomyateevav@gmail.com
+
 ## Delegation of tasks
 
 Muna - Location API and Front End
 Veronika - Back End (Models, Databases, Etc.)
 Ryan - Back End (Models, Databases, Etc.)
 Danielle - Adoption API and Front End
+
+## Credits
+
+Resources used to create this project.
+
+- Apollo GraphQL
+- Bcrypt
+- Concurrently
+- Express
+- Emotion/Tailwind
+- Google Map React
+- JWT
+- MongoDB
+- Node
+- React
+- Heroku
