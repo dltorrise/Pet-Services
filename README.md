@@ -5,7 +5,7 @@
 - [Title](#title)
 - [Description](#description)
 - [User Story](#user-story)
-- [Deployed](#depolyed)
+- [Deployed](#deployed)
 - [Screenshot](#screenshot)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -33,7 +33,7 @@ Pet Services link: https://pet-services.herokuapp.com/
 
 ## Screenshot
 
-![](../Pet-Services/client/src/assets/pet-services-screenshot.jpg)
+![](../Pet-Services/client/src/assets/pet-services-screenshot.png)
 
 ## Installation
 
