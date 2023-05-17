@@ -3,14 +3,6 @@ import React, { useState } from 'react';
 import { useCart } from '../../utils/CartContext'
 import { Link } from 'react-router-dom';
 
-// import { useQuery } from '@apollo/client';
-// const prices = {
-//     dogWalking: 20,
-//     petSitting:30,
-//     petGrooming: 40,
-//     animalBoarding: 20,
-// }
-
 const Cart = () => {
     const { clearCart, cartContents } = useCart()
     console.log(cartContents)

@@ -16,22 +16,32 @@ export const ModalContext = createContext();
 
 function App() {
 
-  // const sendEmail = () => {
+  const [email, setEmail] = useState('')
 
-//     const params = {
-//         email: email,
-//     }
+  const handleInputChange = (e) => {
+    // Getting the value and name of the input which triggered the change
+    const { target } = e;
+    const inputValue = target.value;
+    setEmail(inputValue)
 
-//     send('service_414popx', 'final_project', params, 'rb21Jy6x0x9Mx3EFU')
-//     .then(function() {
-//         console.log('SUCCESS!');
-//         window.location.reload()
-//     }, function(error) {
-//         console.log('FAILED...', error);
-//     });
+  }
+
+  const sendEmail = () => {
+
+    const params = {
+        email: email,
+    }
+
+    send('service_414popx', 'final_project', params, 'rb21Jy6x0x9Mx3EFU')
+    .then(function() {
+        console.log('SUCCESS!');
+        window.location.reload()
+    }, function(error) {
+        console.log('FAILED...', error);
+    });
 
    
-// }
+}
 
   const [showModal, setModal] = useState(false);
   const [switchModal, flipSwitchModal] = useState(false);
@@ -101,17 +111,17 @@ function App() {
               </div>
             </section>
 
-          <section id="newsletter">
+          {/* <section id="newsletter">
             <div className="container3">
               <h1>Subscribe to our newsletter</h1>
               <form>
-                <input type="email" placeholder="Enter Email..." />
-                <button type="submit" className="button_1">
+                <input value={email} onChange={handleInputChange} type="email" placeholder="Enter Email..." />
+                <button onClick={sendEmail()} type="submit" className="button_1">
                   Subscribe
                 </button>
               </form>
             </div>
-          </section>
+          </section> */}
         </div>
 
           {/* our services  */}
@@ -250,7 +260,7 @@ function App() {
         {/* <!-- footer --> */}
         <footer>
           <div className="Contact">
-            <p>Contact Us</p>
+            <p id="contact-title">Contact Us</p>
             <p className="address">Address: 345 Pet ave Chicago, USA 63445</p>
             <p className="phone">Phone: 123-456-7890</p>
             <p className="email">
