@@ -135,12 +135,14 @@ svg {
   font-size: 1.0em;
 }
 #showcase {
+  text-align: center;
   padding-left: 2%;
   margin-bottom: 2%;
   border-radius: 1%;
   font-weight: bolder;
   font-size: 1.0em;
   width: 30%;
+  align-self: center;
 }
 .current1 {
   /* cart needs to be to the right */
@@ -620,10 +622,7 @@ body {
 }
 }
   
-#mission {
-  align-self: center;
-  text-align: center;
-}
+
 
 footer {
   margin-top: 50px;
