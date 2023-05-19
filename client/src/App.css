@@ -157,13 +157,16 @@ svg {
   opacity: 0.2;
 }
 
+#map {
+  height: max-content;
+}
+/* 
 @media only screen 
-and (min-device-width : 2000px) {
+and (min-device-width : 1440px) {
   #map {
     height: max-content;
   }
-
-} 
+}  */
 
 @media only screen 
 and (min-device-width : 320px) 
@@ -653,3 +656,4 @@ footer {
 h3 {
   font-size: larger;
 }
+
