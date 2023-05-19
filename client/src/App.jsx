@@ -103,7 +103,7 @@ function App() {
 </header>
 
         <div id="body">
-          <div className="row">
+          <div id="map" className="row">
             <section id="showcase">
               <div className="container2">
                 <h1>Find a Pet Service</h1>
